@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\dosen;
 use Illuminate\Support\Facades\Crypt;
+use Session;
 
 class DosenController extends Controller
 {
@@ -15,7 +16,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dosen = dosen::all();
+        $dosen = dosen::paginate(7);
         return view('dosen.index',['dosen'=>$dosen]);
     }
 
@@ -97,7 +98,11 @@ class DosenController extends Controller
     $dosen->password = $request->password;
     $dosen->alamat = $request->alamat;
     $dosen->no_hp = $request->no_hp;
-    $dosen->save();
+    if($dosen->save()){
+        Session::flash('sukses','edit berhasil');
+    }else{
+        Session::flash('gagal','edit GAGAL');
+    }
     return redirect('/dosen');
 }
     
@@ -114,4 +119,18 @@ class DosenController extends Controller
         $dosen->delete();
         return redirect('/dosen');
     }
+
+    public function cari(Request $request)
+	{
+		// menangkap data pencarian
+		$cari = $request->cari;
+ 
+    		// mengambil data dari table dosen sesuai pencarian data
+		$dosen = dosen::where('nama','like',"%".$cari."%")
+		->paginate();
+ 
+    		// mengirim data dosen ke view index
+		return view('dosen.index',['dosen' => $dosen]);
+ 
+	}
 }

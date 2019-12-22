@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="{{asset('/css/bootstrap.css')}}">
 <link rel="stylesheet" href="{{asset('/css/gc.css')}}">
+<link rel="stylesheet" href="{{asset('/css/login.css')}}">
     <title>@yield('title')</title>
 </head>
 <body>

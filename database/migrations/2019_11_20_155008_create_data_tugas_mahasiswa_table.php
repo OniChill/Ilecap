@@ -15,16 +15,16 @@ class CreateDataTugasMahasiswaTable extends Migration
     {
         Schema::create('data_tugas_mahasiswa', function (Blueprint $table) {
             $table->increments('id_tugas');
-            $table->Integer('mahasiswa')->length(10)->unsigned();
-            $table->foreign('mahasiswa')
-            ->references('id_mahasiswa')
+            $table->Integer('mahasiswa_id')->length(10)->unsigned();
+            $table->foreign('mahasiswa_id')
+            ->references('id')
             ->on('mahasiswa')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             //
-            $table->Integer('kelas')->length(10)->unsigned();
-            $table->foreign('kelas')
-            ->references('id_kelas')
+            $table->Integer('kelas_id')->length(10)->unsigned();
+            $table->foreign('kelas_id')
+            ->references('id')
             ->on('kelas')
             ->onUpdate('cascade')
             ->onDelete('cascade');

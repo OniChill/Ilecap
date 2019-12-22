@@ -18,9 +18,9 @@ Route::get('/', function () {
 Route::resource('new','CRUDcontroller');
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+// Route::get('/home', function() {
+//     return view('home');
+// })->name('home')->middleware('auth');
 
 //Dosen Controller
 Route::get('dosen','DosenController@index');
@@ -29,9 +29,17 @@ route::post('/dosen/store','DosenController@store');
 route::get('/dosen/edit/{id}','DosenController@edit');
 route::put('/dosen/update/{id}','DosenController@update');
 Route::get('/dosen/hapus/{id}', 'DosenController@destroy');
+Route::get('/dosen/cari', 'DosenController@cari');
 
+//Controller Login
+route::get('/login1','LoginController@index');
+route::post('/login2','LoginController@login');
+route::get('/logout','LoginController@logout');
 
-//Controller beta
-route::get('/gc','pageController@index');
-route::get('/test','pageController@test');
+//Controller SosMed
+route::get('/sosmed','SosMedController@index')->name('sosmed')->middleware('dsnmid');
 route::post('/testcreate','SosMedController@store');
+route::post('/testkomen','SosMedController@komen');
+route::get('/userfeed','SosMedController@UserFeed');
+
+

@@ -1,0 +1,58 @@
+/* sidebar */
+#profil {
+    width: 70%;
+}
+
+#sidebar {
+    background-color : #f8f9fa;
+    height:240px;
+}
+
+#btnProfil{
+    width: 80%;
+}
+/* endSideBar */
+
+
+/* TimeLine */
+textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+#konten{
+    background-color : #f8f9fa; 
+    height: 100%;
+}
+#post{
+    margin-top: 20px;
+}
+
+#profilSos{
+    width: 7%;
+}
+
+.card-body #profilKomen{
+    width: 5%;
+}
+#profilKomenUser{
+    width: 5%;
+    margin-bottom: 20px;
+}
+.card-body .card-title{
+    font-size: 14px;
+}
+
+#postkomen{
+    border-radius: 30px;
+    font-size: 15px; 
+    width: 80%;
+    height: 30px;
+}
+/* endTimeLine*/
+
+
+#rside {
+    background-color : #f8f9fa; 
+    height:240px;
+}

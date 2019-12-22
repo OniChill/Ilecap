@@ -11,6 +11,23 @@ use Illuminate\Support\Facades\Crypt;
 
 @section('content')
 <div class="container">
+@if ($message = Session::get('sukses'))
+				<div class="alert alert-success alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button> 
+					<strong>{{ $message }}</strong>
+				</div>
+@elseif ($message = Session::get('gagal'))
+				<div class="alert alert-danger alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button> 
+					<strong>{{ $message }}</strong>
+				</div>
+@else
+
+@endif
+<form action="/dosen/cari" method="GET">
+		<input type="text" name="cari" placeholder="nama dosen.." value="{{ old('cari') }}">
+		<input type="submit" value="CARI">
+	</form>
     <div class="mt-4 table-responsive">
         <table class="table table-bordered table-striped">
             <tr>
@@ -32,6 +49,12 @@ use Illuminate\Support\Facades\Crypt;
             </tr>
             @endforeach
         </table>
+            Halaman : {{ $dosen->currentPage() }} <br/>
+            Jumlah Data : {{ $dosen->total() }} <br/>
+            Data Per Halaman : {{ $dosen->perPage() }} <br/>
+        
+        
+            {{ $dosen->links() }}
     </div>
 </div>
 @stop

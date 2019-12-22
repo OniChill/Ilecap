@@ -14,7 +14,7 @@ class AddPasswordToMahasiswaTable extends Migration
     public function up()
     {
         Schema::table('mahasiswa', function (Blueprint $table) {
-            $table->string('password')->after('id_mahasiswa');
+            $table->string('password')->after('id');
         });
     }
 

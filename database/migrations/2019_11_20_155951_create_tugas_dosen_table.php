@@ -14,18 +14,18 @@ class CreateTugasDosenTable extends Migration
     public function up()
     {
         Schema::create('tugas_dosen', function (Blueprint $table) {
-            $table->increments('id_tugas');
-            $table->Integer('dosen')->length(10)->unsigned();
-            $table->foreign('dosen')
-            ->references('id_dosen')
+            $table->increments('id');
+            $table->Integer('dosen_id')->length(10)->unsigned();
+            $table->foreign('dosen_id')
+            ->references('id')
             ->on('dosen')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->text('materi');
             //
-            $table->Integer('kelas')->length(10)->unsigned();
-            $table->foreign('kelas')
-            ->references('id_kelas')
+            $table->Integer('kelas_id')->length(10)->unsigned();
+            $table->foreign('kelas_id')
+            ->references('id')
             ->on('kelas')
             ->onUpdate('cascade')
             ->onDelete('cascade');

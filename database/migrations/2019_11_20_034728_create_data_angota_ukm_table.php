@@ -14,17 +14,17 @@ class CreateDataAngotaUkmTable extends Migration
     public function up()
     {
         Schema::create('data_angota_ukm', function (Blueprint $table) {
-            $table->increments('id_anggota');
-            $table->Integer('mahasiswa')->length(10)->unsigned();
-            $table->foreign('mahasiswa')
-            ->references('id_mahasiswa')
+            $table->increments('id');
+            $table->Integer('mahasiswa_id')->length(10)->unsigned();
+            $table->foreign('mahasiswa_id')
+            ->references('id')
             ->on('mahasiswa')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             //
-            $table->Integer('ukm')->length(10)->unsigned();
-            $table->foreign('ukm')
-            ->references('id_ukm')
+            $table->Integer('ukm_id')->length(10)->unsigned();
+            $table->foreign('ukm_id')
+            ->references('id')
             ->on('ukm')
             ->onUpdate('cascade')
             ->onDelete('cascade');

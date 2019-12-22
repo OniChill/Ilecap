@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class dosen extends Model
 {
     protected $table = "dosen";
-    protected $primaryKey = 'id_dosen';
-    protected $guarded = ['id_dosen'];
+    protected $guarded = [''];
     
 
     public function kelas()

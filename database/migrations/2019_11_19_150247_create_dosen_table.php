@@ -14,10 +14,10 @@ class CreateDosenTable extends Migration
     public function up()
     {
         Schema::create('dosen', function (Blueprint $table) {
-            $table->increments('id_dosen');
+            $table->increments('id');
             $table->string('nama');
             $table->string('alamat');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             
             $table->timestamps();
         });

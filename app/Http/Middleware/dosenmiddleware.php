@@ -16,12 +16,11 @@ class dosenmiddleware
     public function handle($request, Closure $next)
     {
         
-        if($request->session()->get('id_dosen') == null){
-            return redirect('login-dosen');
+        if($request->session()->get('id_dosen')){
+            return $next($request);
+        }elseif ($request->session()->get('id_mahasiswa')) {
+            return $next($request);
         }
-        elseif($request->session()->get('id_dosen') != null){
-            return redirect('dosen');
-        }
-        return $next($request);
+            return redirect('login1');
     }
 }

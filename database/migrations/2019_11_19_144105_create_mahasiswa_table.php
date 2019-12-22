@@ -14,12 +14,12 @@ class CreateMahasiswaTable extends Migration
     public function up()
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->increments('id_mahasiswa')->unique();
+            $table->increments('id')->unique();
             $table->string('nama');
             $table->enum('jurusan',['Ti-mti','Ti-dgm','Ti-kab','Sistem Kmputer']);
             $table->string('email');
             $table->string('alamat');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->string('jenis_kelamin');
             
             

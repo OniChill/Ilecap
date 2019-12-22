@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Arr;
+use App\mahasiswa;
 
 class MahasiswaSeeder extends Seeder
 {
@@ -16,11 +17,12 @@ class MahasiswaSeeder extends Seeder
         //memilih data faker indonesia
         $faker = Faker::create('id_ID');
  
-    	for($i = 1; $i <= 5; $i++){
+    	for($i = 1; $i <= 1000; $i++){
             $jurusan = ['Sistem Kmputer','Ti-dgm','Ti-kab','Ti-mti'];
             
     	      // insert data ke table mahasiswa menggunakan Faker
-    		DB::table('mahasiswa')->insert([
+    		mahasiswa::create([
+    			'id' => $faker->numberBetween($min = 11000000, $max = 19000000),
     			'nama' => $faker->name,
     			'password' => $faker->password,
                 'alamat' => $faker->address,

@@ -8,11 +8,11 @@ class pageController extends Controller
 {
     public function index()
     {
-        return view('test');
+        return view('sosmed.home');
     }
 
     public function test()
     {
-        return view('chat.index');
+        return view('sosmed.index');
     }
 }

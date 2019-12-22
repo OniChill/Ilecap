@@ -10,30 +10,39 @@
             @csrf
                 <div class="form-group">
                     <textarea name="newPost" id="newPost" cols="30"  rows="5" placeholder="post something??"></textarea>
-                    <input type="hidden" name="user" id="user" value="1">
+                    <input type="hidden" name="user" id="user" value="2">
                 </div>
                 <button type="submit" class="btn btn-primary">post</button>
             </form>
         </div>
     </section>
-   
+
     <section class="row posts">
         <div class="col-md-6">
             <header><h3>Beranda</h3></header>
-            @for($i=0; $i<=5; $i++)
+            @foreach ($dosen_feed as $p)
             <article class="post">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus maiores odit quaerat praesentium rem debitis corporis, quisquam neque id fugiat hic quis reiciendis doloremque cupiditate libero quo? Facere, qui vel!</p>
+                <p>{{$p->feed}}</p>
                 <div class="info">
-                    Posted by Blabla on 99 dec 99
+                    Posted by {{$p->dosen->nama}}  on {{ $p->created_at }}
                 </div>
                 <div class="aksi">
                     <a href="#">Like</a>
                     <a href="#">edit</a>
                     <a href="#">Delete</a>
                 </div>
+                <p></p>
+                <div>
+                <form action="/testkomen" method="POST">
+                @csrf
+                
+                <input type="text" name="komen" id="komen">
+                <button type="submit">Kirim</button>
+                </form>
+                </div>
             </article>
-            @endfor
+            @endforeach
         </div>
     </section>
-   
+    
 @stop 

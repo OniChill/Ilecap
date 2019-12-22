@@ -14,7 +14,7 @@ class CreateUkmTable extends Migration
     public function up()
     {
         Schema::create('ukm', function (Blueprint $table) {
-            $table->increments('id_ukm');
+            $table->increments('id');
             $table->string('nama_ukm');
             $table->text('deskripsi');
             $table->text('logo');

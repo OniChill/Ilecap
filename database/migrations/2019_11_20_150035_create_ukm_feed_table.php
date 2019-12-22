@@ -14,15 +14,18 @@ class CreateUkmFeedTable extends Migration
     public function up()
     {
         Schema::create('ukm_feed', function (Blueprint $table) {
-            $table->Integer('anggota_ukm')->length(10)->unsigned();
-            $table->foreign('anggota_ukm')
-            ->references('id_anggota')
+            $table->increments('id');
+            $table->Integer('anggota_id')->length(10)->unsigned();
+            $table->foreign('anggota_id')
+            ->references('id')
             ->on('data_angota_ukm')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->string('feed');
+            $table->text('gambar');
             $table->date('tanggal_upload');
+            $table->integer('like');
             $table->timestamps('');
         });
     }

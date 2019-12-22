@@ -13,18 +13,19 @@
                 <div class="row">
                     <div class="col-md-6 login-form-1">
                         <h3>Welcome <br>to ILecap</h3>
-                        <img style="width : 100%; height :100%;" src="/icon/icon8/Mobile-login-Cristina.jpg" alt="Mobile-login-Cristina">
+                        <img style="width : 100%; height :100%;" src="/icon/icon8/Mobile-login-Cristina.jpg" alt="404">
                     </div>
                     <div class="col-md-6 login-form-2">
                         <h3>Login for Form 2</h3>
-                        <form>
+                        <form action="/login2" method="post">
+                        @csrf
                             <div class="form-group">
-                                <a>Name</a>
-                                <input type="text" class="form-control bulet" placeholder="Your Email *" value="" />
+                                <a>Id</a>
+                                <input type="text" class="form-control bulet" name="id" placeholder="Your Id *" value="" required/>
                             </div>
                             <div class="form-group">
                                     <a>Password</a>
-                                <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                                <input type="password" class="form-control" name="pass" placeholder="Your Password *" value="" required/>
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btnSubmit" value="Login" />

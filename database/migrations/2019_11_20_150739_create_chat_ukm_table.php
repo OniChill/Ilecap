@@ -14,17 +14,17 @@ class CreateChatUkmTable extends Migration
     public function up()
     {
         Schema::create('chat_ukm', function (Blueprint $table) {
-            $table->increments('id_chat');
-            $table->Integer('anggota')->length(10)->unsigned();
-            $table->foreign('anggota')
-            ->references('id_anggota')
+            $table->increments('id');
+            $table->Integer('anggota_id')->length(10)->unsigned();
+            $table->foreign('anggota_id')
+            ->references('id')
             ->on('data_angota_ukm')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             //
-            $table->Integer('ukm')->length(10)->unsigned();
-            $table->foreign('ukm')
-            ->references('id_ukm')
+            $table->Integer('ukm_id')->length(10)->unsigned();
+            $table->foreign('ukm_id')
+            ->references('id')
             ->on('ukm')
             ->onUpdate('cascade')
             ->onDelete('cascade');

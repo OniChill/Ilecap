@@ -14,10 +14,10 @@ class CreateKelasTable extends Migration
     public function up()
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table ->increments('id_kelas');
-            $table->integer('dosen')->length(10)->unsigned();
-            $table->foreign('dosen')
-            ->references('id_dosen')
+            $table ->increments('id');
+            $table->integer('dosen_id')->length(10)->unsigned();
+            $table->foreign('dosen_id')
+            ->references('id')
             ->on('dosen')
             ->onUpdate('cascade')
             ->onDelete('cascade');

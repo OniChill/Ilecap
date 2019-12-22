@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-md-6 login-form-2">
                         <h2>edit data dosen</h2>
-                        <form method="POST" action="{{url('dosen/update/'.$dosen->id_dosen)}}" >
+                        <form method="POST" action="{{url('dosen/update/'.$dosen['id'])}}" >
                         <!-- {{ csrf_field() }} -->
                         <!-- {{ method_field('PUT') }} -->
                         @csrf

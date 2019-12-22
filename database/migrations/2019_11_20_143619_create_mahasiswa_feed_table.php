@@ -14,15 +14,17 @@ class CreateMahasiswaFeedTable extends Migration
     public function up()
     {
         Schema::create('mahasiswa_feed', function (Blueprint $table) {
-            $table->Integer('mahasiswa')->length(10)->unsigned();
-            $table->foreign('mahasiswa')
-            ->references('id_mahasiswa')
+            $table->increments('id');
+            $table->Integer('mahasiswa_id')->length(10)->unsigned();
+            $table->foreign('mahasiswa_id')
+            ->references('id')
             ->on('mahasiswa')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->date('tanggal_chat');
             $table->text('feed');
-            $table->text('komentar');
+            $table->text('gambar');
+            $table->integer('like');
             $table->timestamps();
         });
     }

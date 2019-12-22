@@ -14,15 +14,16 @@ class CreateDosenFeedTable extends Migration
     public function up()
     {
         Schema::create('dosen_feed', function (Blueprint $table) {
-            $table->Integer('dosen')->length(10)->unsigned();
-            $table->foreign('dosen')
-            ->references('id_dosen')
+            $table->increments('id');
+            $table->Integer('dosen_id')->length(10)->unsigned();
+            $table->foreign('dosen_id')
+            ->references('id')
             ->on('dosen')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->text('feed');
-            $table->string('komentar');
-
+            $table->text('gambar');
+            $table->integer('like');
             $table->timestamps();
         });
     }
