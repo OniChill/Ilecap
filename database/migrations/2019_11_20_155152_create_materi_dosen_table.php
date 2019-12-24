@@ -28,8 +28,6 @@ class CreateMateriDosenTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->text('materi');
-            
-            $table->date('tanggal_upload');
             $table->timestamps('');
         });
     }

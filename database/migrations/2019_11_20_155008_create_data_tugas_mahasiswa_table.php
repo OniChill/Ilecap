@@ -29,8 +29,6 @@ class CreateDataTugasMahasiswaTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->text('berkas');
-
-            $table->date('tanggal_kirim');
             $table->timestamps('');
         });
     }

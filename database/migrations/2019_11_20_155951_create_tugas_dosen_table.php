@@ -32,7 +32,6 @@ class CreateTugasDosenTable extends Migration
             $table->string('nama_tugas');
             $table->string('deskripsi');
             $table->text('file');
-            $table->date('tanggal_upload');
             $table->timestamps('');
         });
     }

@@ -7,9 +7,9 @@ use App\dosen_feed;
 use App\dosen;
 use App\mahasiswa;
 use App\mahasiswa_feed;
-use App\komentar_dosen;
-use App\komentar_mhs;
-use App\Post;
+use App\tb_feed;
+
+use App\komentar;
 
 class SosMedController extends Controller
 {
@@ -28,14 +28,16 @@ class SosMedController extends Controller
             $user = mahasiswa::find($userId);
         }
         
+        $feed = tb_feed::orderBy('created_at','desc')->get();
+
         //mengurutkan feed dari tanggal terbaru
-        $dosen_feed = dosen_feed::orderBy('created_at', 'desc')->join('dosen','dosen_feed.dosen_id','dosen.id')->select('dosen_feed.created_at','dosen_feed.id as id','dosen_id','feed','gambar','like','dosen.nama as nama')->get()->toArray();
-        $mahasiswa_feed = mahasiswa_feed::orderBy('created_at', 'desc')->join('mahasiswa','mahasiswa_feed.mahasiswa_id','mahasiswa.id')->select('mahasiswa_feed.created_at','mahasiswa_feed.id as id','mahasiswa_id','feed','gambar','like','mahasiswa.nama as nama')->get()->toArray();
-        $feedMerge = array_merge($dosen_feed,$mahasiswa_feed);
-        rsort($feedMerge);
+        // $dosen_feed = dosen_feed::orderBy('created_at', 'desc')->join('dosen','dosen_feed.dosen_id','dosen.id')->select('dosen_feed.created_at','dosen_feed.id as id','dosen_id','feed','gambar','like','dosen.nama as nama')->get()->toArray();
+        // $mahasiswa_feed = mahasiswa_feed::orderBy('created_at', 'desc')->join('mahasiswa','mahasiswa_feed.mahasiswa_id','mahasiswa.id')->select('mahasiswa_feed.created_at','mahasiswa_feed.id as id','mahasiswa_id','feed','gambar','like','mahasiswa.nama as nama')->get()->toArray();
+        // $feedMerge = array_merge($dosen_feed,$mahasiswa_feed);
+        // rsort($feedMerge);
         
         
-        return view('sosmed.home',compact('feedMerge','user'));
+        return view('sosmed.home',compact('feed','user'));
     }
 
     public function UserFeed(Request $request)
@@ -44,12 +46,12 @@ class SosMedController extends Controller
             $userId = $request->session()->get('id_dosen');
             $user = dosen::find($userId);
             $cek = 'dosen';
-            $feed = dosen_feed::orderBy('created_at', 'desc')->where('dosen_id',$userId)->get();
+            $feed = tb_feed::orderBy('created_at', 'desc')->where('users_id',$userId)->get();
         }elseif ($request->session()->get('id_mahasiswa')) {
             $userId = $request->session()->get('id_mahasiswa');
             $user = mahasiswa::find($userId);
             $cek = 'mahasiswa';
-            $feed = mahasiswa_feed::orderBy('created_at', 'desc')->where('mahasiswa_id',$userId)->get();
+            $feed = tb_feed::orderBy('created_at', 'desc')->where('users_id',$userId)->get();
         }
         return view('sosmed.Userfeed',compact('feed','user','cek'));
     }
@@ -79,18 +81,18 @@ class SosMedController extends Controller
         ]);
         if(count(dosen::where(['id'=>$request->user])->get()) > 0){
             //tambah data ke tabel dosen_feed
-            dosen_feed::create([
+            tb_feed::create([
                 'feed' => $request->newPost,
-                'dosen_id' => $request->user,
+                'users_id' => $request->user,
                 'gambar' => '',
                 'like' => '0',
                 
             ]);
         }elseif (count(mahasiswa::where(['id'=>$request->user])->get()) > 0) {
             //tambah data ke tabel mahasiswa_feed
-            mahasiswa_feed::create([
+            tb_feed::create([
                 'feed' => $request->newPost,
-                'mahasiswa_id' => $request->user,
+                'users_id' => $request->user,
                 'gambar' => '',
                 'like' => '0',
                 
@@ -106,19 +108,12 @@ class SosMedController extends Controller
     {
         
         //mencari data feed berdasarkan id feed yg akan dikomen
-        if(count(dosen_feed::where(['id'=>$request->user,'dosen_id'=>$request->users])->get()) > 0){
-            komentar_dosen::create([
-                'dosen_feed_id' =>$request->user,
+            komentar::create([
+                'users_id'=>$request->users,
+                'tb_feed_id' =>$request->user,
                 'komentar' =>$request->komen
             ]);
             return redirect('/sosmed');
-        }elseif (count(mahasiswa_feed::where(['id'=>$request->user,'mahasiswa_id'=>$request->users])->get()) > 0) {
-            komentar_mhs::create([
-                'mahasiswa_feed_id' =>$request->user,
-                'komentar' =>$request->komen
-            ]);
-            return redirect('/sosmed');
-        }   
        
     }
 

@@ -14,8 +14,16 @@ class dosen extends Model
     {
         return $this->belongsTo('App\Kelas');
     }
-    public function dosen_feed()
+    // public function tb_feed()
+    // {
+    //     return $this->morphMany('App\tb_feed','users');
+    // }
+    public function tb_feed()
     {
-        return $this->hasMany('App\Dosen_feed');
+        return $this->hasMany('App\tb_feed','users_id');
+    }
+    public function komentar()
+    {
+        return $this->hasMany('App\komentar','users_id');
     }
 }

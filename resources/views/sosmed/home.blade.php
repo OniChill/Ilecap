@@ -13,21 +13,19 @@
                 </form>
                     <!-- //endTextArea -->
 
-                    <!-- Posts -->
-                  
-
-
-
-
- 
-
-                <!-- //post mahasiswa -->
-                @foreach($feedMerge as $m)
-                <div class="card text-white bg-primary mb-3 mt-2">
+                @foreach($feed as $f)
+                     <!-- //post dosen -->
+                     <div class="card text-white bg-primary mb-3 mt-2">
                         <div class="card-header">
                             <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
-                            <span>{{$m['nama']}}</span>
-                            <p>{{$m['feed']}}</p>
+                            @if($f->users_id >= 6280000 && $f->users_id <= 6289999 )
+                            <span>{{$f->dosen->nama}}</span>
+                            @elseif($f->users_id >= 11000000 && $f->users_id <= 19000000 )
+                            <span>{{$f->mahasiswa->nama}}</span>
+                            @else
+                            <span>Anda Nyasar??</span>
+                            @endif
+                            <p>{{$f->feed}}</p>
                             <hr>
                             <div class="row">
                                 <div class="col-6 text-center">
@@ -41,21 +39,31 @@
                             </div>
                         </div>
                             <div class="card-body">
-                            
-
+                            @foreach($f->komentar as $kd)
+                                <img src="{{asset('img/test.jpg')}}" id="profilKomen" alt="..."  class="img-fluid border border-info rounded-circle">
+                                @if($kd->users_id >= 6280000 && $kd->users_id <= 6289999 )
+                                <span class="card-title">{{$kd->dosen->nama}}</span>
+                                @elseif($kd->users_id >= 11000000 && $kd->users_id <= 19000000 )
+                                <span class="card-title">{{$kd->mahasiswa->nama}}</span>
+                                @else
+                                <span class="card-title">Anda Nyasar??</span>
+                                @endif
+                                <p class="card-text">{{$kd->komentar}}</p>
+                            @endforeach
+                                    
                                 <form action="/testkomen" method="POST">
+                                <img src="{{asset('img/test.jpg')}}" id="profilKomenUser" alt="..."  class="img-fluid border border-info rounded-circle ">
                                     @csrf
-                                    <img src="{{asset('img/test.jpg')}}" id="profilKomenUser" alt="..."  class="img-fluid border border-info rounded-circle ">
+                                    <input type="hidden" name="user" id="user" value="{{$f->id}}">
+                                    <input type="hidden" name="users" id="user" value="{{$user->id}}">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
-                                    <input type="hidden" name="user" id="user" value="{{$m['id']}}">
-                                    <input type="hidden" name="users" id="users" value="{{$user->id}}">
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>
                                 
                             </div>
                     </div>
                     @endforeach
-                    <!-- //end post mahasiswa -->
+                <!-- //end post dosen -->
                     <!-- endPosts -->
 
 

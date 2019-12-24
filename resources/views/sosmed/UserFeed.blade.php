@@ -29,7 +29,13 @@
                             <div class="card-body">
                             @foreach($f->komentar_dosen as $kd)
                                 <img src="{{asset('img/test.jpg')}}" id="profilKomen" alt="..."  class="img-fluid border border-info rounded-circle">
-                                <span class="card-title">budai</span>
+                                @if($kd->users_id >= 6280000 && $kd->users_id <= 6289999 )
+                                <span class="card-title">{{$kd->dosen->nama}}</span>
+                                @elseif($kd->users_id >= 11000000 && $kd->users_id <= 19000000 )
+                                <span class="card-title">{{$kd->mahasiswa->nama}}</span>
+                                @else
+                                <span class="card-title">Anda Nyasar??</span>
+                                @endif
                                 <p class="card-text">{{$kd->komentar}}</p>
                             @endforeach
                                     
@@ -69,9 +75,15 @@
                             </div>
                         </div>
                             <div class="card-body">
-                            @foreach($f->komentar_mhs as $km)
+                            @foreach($f->komentar as $km)
                                 <img src="{{asset('img/test.jpg')}}" id="profilKomen" alt="..."  class="img-fluid border border-info rounded-circle">
-                                <span class="card-title">budai</span>
+                                @if($km->users_id >= 6280000 && $km->users_id <= 6289999 )
+                                <span class="card-title">{{$km->dosen->nama}}</span>
+                                @elseif($km->users_id >= 11000000 && $km->users_id <= 19000000 )
+                                <span class="card-title">{{$km->mahasiswa->nama}}</span>
+                                @else
+                                <span class="card-title">Anda Nyasar??</span>
+                                @endif
                                 <p class="card-text">{{$km->komentar}}</p>
                             @endforeach
                                     
@@ -81,7 +93,7 @@
                                     <img src="{{asset('img/test.jpg')}}" id="profilKomenUser" alt="..."  class="img-fluid border border-info rounded-circle ">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
-                                    <input type="hidden" name="users" id="users" value="{{$f->mahasiswa_id}}">
+                                    <input type="hidden" name="users" id="users" value="{{$user->id}}">
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>
                                 
