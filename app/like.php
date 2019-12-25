@@ -4,20 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class komentar extends Model
+class like extends Model
 {
-    protected $table = "komentar";
-    protected $guarded = [''];
-
     public function tb_feed()
     {
         return $this->belongsTo('App\tb_feed');
     }
-    public function ukm()
-    {
-        return $this->belongsTo('App\ukm');
-    }
-
 
     public function mahasiswa()
     {

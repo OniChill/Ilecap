@@ -40,6 +40,8 @@ route::get('/logout','LoginController@logout');
 route::get('/sosmed','SosMedController@index')->name('sosmed')->middleware('dsnmid');
 route::post('/testcreate','SosMedController@store');
 route::post('/testkomen','SosMedController@komen');
-route::get('/userfeed','SosMedController@UserFeed');
+route::get('/sosmed/userfeed','SosMedController@UserFeed');
+route::get('/sosmed/pengumuman','SosMedController@pengumuman');
+route::get('/sosmed/ukm','SosMedController@ukm');
 
 

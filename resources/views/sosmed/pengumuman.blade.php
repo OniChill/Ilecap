@@ -8,7 +8,7 @@
                     <div class="form-group text-center">
                         <textarea class="form-control" name="newPost" id="post" placeholder="write something...."></textarea>
                         <input type="hidden" name="user" id="user" value="{{$user->id}}">
-                        <input type="hidden" name="page" id="page" value="beranda">
+                        <input type="hidden" name="page" id="page" value="pengumuman">
                     </div>
                         <button type="submit" class="btn btn-primary">post</button>
                 </form>
@@ -27,14 +27,6 @@
                             <span>Anda Nyasar??</span>
                             @endif
                             <p>{{$f->feed}}</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <span>suka</span>
-                                </div>
-                                <div class="col-6 jkom">
-                                    <span >{{$f->komentar->count()}} Komentar</span>
-                                </div>
-                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col-6 text-center">
@@ -65,7 +57,7 @@
                                     @csrf
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
-                                    <input type="hidden" name="page" id="page" value="beranda">
+                                    <input type="hidden" name="page" id="page" value="pengumuman">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>

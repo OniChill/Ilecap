@@ -22,4 +22,8 @@ class mahasiswa extends Model
     {
         return $this->hasMany('App\komentar','users_id');
     }
+    public function like()
+    {
+        return $this->hasMany('App\like');
+    }
 }

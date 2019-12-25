@@ -2,48 +2,27 @@
 
 @section('konten')
 <div class="container mt-4 pt-1" id="konten" >
-                <!-- //TextArea buat ngepost -->
-                <form action="/testcreate" method="POST">
-                    @csrf
-                    <div class="form-group text-center">
-                        <textarea class="form-control" name="newPost" id="post" placeholder="write something...."></textarea>
-                        <input type="hidden" name="user" id="user" value="{{$user->id}}">
-                        <input type="hidden" name="page" id="page" value="beranda">
-                    </div>
-                        <button type="submit" class="btn btn-primary">post</button>
-                </form>
-                    <!-- //endTextArea -->
 
                 @foreach($feed as $f)
                      <!-- //post dosen -->
                      <div class="card text-white bg-primary mb-3 mt-2">
                         <div class="card-header">
                             <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
-                            @if($f->users_id >= 6280000 && $f->users_id <= 6289999 )
-                            <span>{{$f->dosen->nama}}</span>
-                            @elseif($f->users_id >= 11000000 && $f->users_id <= 19000000 )
-                            <span>{{$f->mahasiswa->nama}}</span>
-                            @else
-                            <span>Anda Nyasar??</span>
-                            @endif
-                            <p>{{$f->feed}}</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <span>suka</span>
-                                </div>
-                                <div class="col-6 jkom">
-                                    <span >{{$f->komentar->count()}} Komentar</span>
-                                </div>
-                            </div>
+                            <span>{{$f->nama_ukm}}</span>
+                            <p>{{$f->deskripsi}}</p>
                             <hr>
                             <div class="row">
-                                <div class="col-6 text-center">
+                                <div class="col-4 text-center">
                                     <i class="fas fa-thumbs-up"></i>
                                     <span>Like</span>
                                 </div>
-                                <div class="col-6 text-center">
+                                <div class="col-4 text-center">
                                 <i class="fas fa-comment"></i>
                                 <span>Komen</span>
+                                </div>
+                                <div class="col-4 text-center">
+                                <i class="fas fa-comment"></i>
+                                <a href="" style="color:white;">Daftar</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +44,7 @@
                                     @csrf
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
-                                    <input type="hidden" name="page" id="page" value="beranda">
+                                    <input type="hidden" name="page" id="page" value="ukm">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>

@@ -8,6 +8,7 @@ use App\dosen;
 use App\mahasiswa;
 use App\mahasiswa_feed;
 use App\tb_feed;
+use App\ukm;
 
 use App\komentar;
 
@@ -38,6 +39,34 @@ class SosMedController extends Controller
         
         
         return view('sosmed.home',compact('feed','user'));
+    }
+
+    public function pengumuman(Request $request)
+    {
+        if($request->session()->get('id_dosen')){
+            $userId = $request->session()->get('id_dosen');
+            $user = dosen::find($userId);
+        }elseif ($request->session()->get('id_mahasiswa')) {
+            $userId = $request->session()->get('id_mahasiswa');
+            $user = mahasiswa::find($userId);
+        }
+        
+        $feed = tb_feed::orderBy('created_at','desc')->where('pengumuman','1')->get();
+        return view('sosmed.pengumuman',compact('feed','user'));
+    }
+
+    public function ukm(Request $request)
+    {
+        if($request->session()->get('id_dosen')){
+            $userId = $request->session()->get('id_dosen');
+            $user = dosen::find($userId);
+        }elseif ($request->session()->get('id_mahasiswa')) {
+            $userId = $request->session()->get('id_mahasiswa');
+            $user = mahasiswa::find($userId);
+        }
+        
+        $feed = ukm::orderBy('created_at','desc')->get();
+        return view('sosmed.ukm',compact('feed','user'));
     }
 
     public function UserFeed(Request $request)
@@ -79,29 +108,32 @@ class SosMedController extends Controller
             'newPost' => 'required',
             'user' => 'required'
         ]);
-        if(count(dosen::where(['id'=>$request->user])->get()) > 0){
-            //tambah data ke tabel dosen_feed
+        if($request->page == 'beranda'){
+            //tambah data ke tabel tb_feed ke beranda
             tb_feed::create([
                 'feed' => $request->newPost,
                 'users_id' => $request->user,
                 'gambar' => '',
                 'like' => '0',
+                'pengumuman' => '0',
                 
             ]);
-        }elseif (count(mahasiswa::where(['id'=>$request->user])->get()) > 0) {
-            //tambah data ke tabel mahasiswa_feed
+            return redirect('/sosmed');
+        }elseif ($request->page == 'pengumuman') {
+            //tambah data ke tabel tb_feed ke page pengumuman
             tb_feed::create([
                 'feed' => $request->newPost,
                 'users_id' => $request->user,
                 'gambar' => '',
                 'like' => '0',
+                'pengumuman' => '1',
                 
             ]);
+            return redirect('/sosmed/pengumuman');
         }else {
             dd('anda human???');
         } 
         
-        return redirect('/sosmed');
     }
 
     public function komen(Request $request)
@@ -113,7 +145,22 @@ class SosMedController extends Controller
                 'tb_feed_id' =>$request->user,
                 'komentar' =>$request->komen
             ]);
-            return redirect('/sosmed');
+            if($request->page =="userfeed")
+            {
+                return redirect('/sosmed/userfeed');
+            }
+            elseif($request->page =="beranda")
+            {
+                return redirect('/sosmed');
+            }
+            elseif($request->page =="pengumuman")
+            {
+                return redirect('/sosmed/pengumuman');
+            }
+            else {
+                return dd('404');
+            }
+            
        
     }
 
