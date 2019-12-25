@@ -43,5 +43,7 @@ route::post('/testkomen','SosMedController@komen');
 route::get('/sosmed/userfeed','SosMedController@UserFeed');
 route::get('/sosmed/pengumuman','SosMedController@pengumuman');
 route::get('/sosmed/ukm','SosMedController@ukm');
+route::post('/sosmed/like','SosMedController@like');
+
 
 

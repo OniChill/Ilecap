@@ -10,11 +10,26 @@
                             <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
                             <span>{{$f->nama_ukm}}</span>
                             <p>{{$f->deskripsi}}</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>{{$f->like->count()}} like</span>
+                                </div>
+                                <div class="col-6 jkom">
+                                    <span >{{$f->komentar->count()}} Komentar</span>
+                                </div>
+                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col-4 text-center">
-                                    <i class="fas fa-thumbs-up"></i>
-                                    <span>Like</span>
+                                    <form action="/sosmed/like" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="postId" id="user" value="{{$f->id}}">
+                                        <input type="hidden" name="userId" id="user" value="{{$user->id}}">
+                                        <input type="hidden" name="page" id="page" value="ukm">
+                                        <button type="submit" class="like">
+                                            <i class="fas fa-thumbs-up"> Like</i>
+                                        </button>
+                                    </form>
                                 </div>
                                 <div class="col-4 text-center">
                                 <i class="fas fa-comment"></i>

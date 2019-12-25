@@ -9,6 +9,7 @@ use App\mahasiswa;
 use App\mahasiswa_feed;
 use App\tb_feed;
 use App\ukm;
+use App\like;
 
 use App\komentar;
 
@@ -164,29 +165,38 @@ class SosMedController extends Controller
        
     }
 
-    // public function like(Request $request)
-    // {
-    //     $post_id = $request['postId'];
-    //     $user_id = $request['userId'];
-    //     //mencari data feed berdasarkan id feed yg akan dikomen
-    //     $cek = dosen_feed::find($post_id);
-    //     $cek2 = mahasiswa_feed::find($post_id); 
-    //     $post = ($cek) 
-    //     ? like::create([
-    //         'post_id' => $cek,
-    //         'dosen_id' => $user_id,
-    //         'mahasiswa_id' => '',
-    //         'like'=>true
-    //     ]) 
-    //     :like::create([
-    //         'post_id' => $cek,
-    //         'dosen_id' => '',
-    //         'mahasiswa_id' => $user_id,
-    //         'like'=>true
-    //     ]) ;
-    //     //update data komen ke field komentar
-    //     dd($post);
-    // }
+    public function like(Request $request)
+    {
+        $like = like::where('users_id',$request->userId)->where('tb_feed_id',$request->postId)->first();
+        if ($like == false) {
+        like::create([
+            'users_id'=>$request->userId,
+            'tb_feed_id'=>$request->postId,
+            'like'=>true
+        ]);
+        }else {
+            $like->delete();
+        }
+        if($request->page =="userfeed")
+            {
+                return redirect('/sosmed/userfeed');
+            }
+            elseif($request->page =="beranda")
+            {
+                return redirect('/sosmed');
+            }
+            elseif($request->page =="pengumuman")
+            {
+                return redirect('/sosmed/pengumuman');
+            }
+            elseif($request->page =="ukm")
+            {
+                return redirect('/sosmed/ukm');
+            }
+            else {
+                return dd('404');
+            }
+    }
 
     /**
      * Display the specified resource.

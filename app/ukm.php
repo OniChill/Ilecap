@@ -13,4 +13,9 @@ class ukm extends Model
     {
         return $this->hasMany('App\komentar','tb_feed_id');
     }
+
+    public function like()
+    {
+        return $this->hasMany('App\like','tb_feed_id');
+    }
 }

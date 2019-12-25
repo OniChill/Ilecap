@@ -28,4 +28,8 @@ class tb_feed extends Model
     {
         return $this->hasMany('App\komentar');
     }
+    public function like()
+    {
+        return $this->hasMany('App\like');
+    }
 }

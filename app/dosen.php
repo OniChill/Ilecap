@@ -28,6 +28,6 @@ class dosen extends Model
     }
     public function like()
     {
-        return $this->hasMany('App\like');
+        return $this->hasMany('App\like','users_id');
     }
 }
