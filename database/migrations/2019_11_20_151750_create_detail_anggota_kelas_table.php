@@ -14,12 +14,8 @@ class CreateDetailAnggotaKelasTable extends Migration
     public function up()
     {
         Schema::create('detail_anggota_kelas', function (Blueprint $table) {
-            $table->Integer('mahasiswa_id')->length(10)->unsigned();
-            $table->foreign('mahasiswa_id')
-            ->references('id')
-            ->on('mahasiswa')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->increments('id');
+            $table->Integer('user_id')->length(10)->unsigned();
             $table->Integer('kelas_id')->length(10)->unsigned();
             $table->foreign('kelas_id')
             ->references('id')

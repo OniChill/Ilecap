@@ -16,11 +16,11 @@ class CreateTbFeedTable extends Migration
         Schema::create('tb_feed', function (Blueprint $table) {
             $table->Increments('id');
             $table->Integer('users_id')->length(10)->unsigned();
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('mahasiswa')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            // $table->foreign('users_id');
+            // // ->references('id')
+            // // ->on('mahasiswa')
+            // // ->onUpdate('cascade')
+            // // ->onDelete('cascade');
             $table->text('feed');
             $table->text('gambar');
             $table->integer('like');

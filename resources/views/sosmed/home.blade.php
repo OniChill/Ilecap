@@ -7,7 +7,7 @@
                     @csrf
                     <div class="form-group text-center">
                         <textarea class="form-control" name="newPost" id="post" placeholder="write something...."></textarea>
-                        <input type="hidden" name="user" id="user" value="{{$user->id}}">
+                        <input type="hidden" name="user" id="user" value="{{$user['id']}}">
                     </div>
                         <button type="submit" class="btn btn-primary">post</button>
                 </form>

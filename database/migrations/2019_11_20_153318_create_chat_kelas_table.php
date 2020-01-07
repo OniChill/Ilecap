@@ -15,30 +15,10 @@ class CreateChatKelasTable extends Migration
     {
         Schema::create('chat_kelas', function (Blueprint $table) {
             $table->increments('id_chat');
-            $table->Integer('mahasiswa_id')->length(10)->unsigned();
-            $table->foreign('mahasiswa_id')
-            ->references('id')
-            ->on('mahasiswa')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            //
-            $table->Integer('dosen_id')->length(10)->unsigned();
-            $table->foreign('dosen_id')
-            ->references('id')
-            ->on('dosen')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->timestamps();
-
-            //
+            $table->Integer('user_id')->length(10)->unsigned();
             $table->Integer('kelas_id')->length(10)->unsigned();
-            $table->foreign('kelas_id')
-            ->references('id')
-            ->on('kelas')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->text('chat');
-
+            $table->timestamps();
+          
         });
     }
 

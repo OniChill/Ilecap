@@ -22,11 +22,7 @@ class CreateKomentarTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->Integer('users_id')->length(10)->unsigned();
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('mahasiswa')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+          
 
 
             $table->text('komentar');
