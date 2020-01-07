@@ -15,13 +15,8 @@ class CreateKelasTable extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table ->increments('id');
-            $table->integer('dosen_id')->length(10)->unsigned();
-            $table->foreign('dosen_id')
-            ->references('id')
-            ->on('dosen')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-           
+            $table->integer('user_id')->length(10)->unsigned();
+            
             $table->string('nama_kelas');
             $table->timestamps();
         });

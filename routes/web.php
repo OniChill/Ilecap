@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 Route::resource('new','CRUDcontroller');
@@ -47,3 +47,19 @@ route::post('/sosmed/like','SosMedController@like');
 
 
 
+//Controller Chat
+route::get('/chat','chatController@index');
+route::get('/chat_kelas/{id}','chat_isicontroller@isi');
+route::get('/tambah_anggota/{id}','kls_anggotacontroller@indextambah');
+route::post('/add_toclass','kls_anggotacontroller@store');
+
+
+//controller tambahkelas
+
+route::get('/Tambah-kelas/{id}','kelascontroller@index');
+route::post('addkelas','kelascontroller@storekelas');
+
+//controller materi
+route::get('/materi/{id}','matericontroller@index');
+route::get('/add_materi/{id}','matericontroller@indexadd');
+route::post('/upload_file','matericontroller@store');

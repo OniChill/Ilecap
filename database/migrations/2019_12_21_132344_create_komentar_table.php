@@ -17,11 +17,7 @@ class CreateKomentarTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('tb_feed_id')->length(10)->unsigned();
             $table->Integer('users_id')->length(10)->unsigned();
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('mahasiswa')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+          
 
 
             $table->text('komentar');

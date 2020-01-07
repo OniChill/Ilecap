@@ -12,19 +12,23 @@ class dosen extends Model
 
     public function kelas()
     {
-        return $this->belongsTo('App\Kelas');
+        return $this->hasMany('App\kelas','user_id','id');
     }
-    // public function tb_feed()
-    // {
-    //     return $this->morphMany('App\tb_feed','users');
-    // }
-    public function tb_feed()
+      public function tb_feed()
     {
-        return $this->hasMany('App\tb_feed','users_id');
+        return $this->hasMany('App\tb_feed','users_id','id');
     }
     public function komentar()
     {
-        return $this->hasMany('App\komentar','users_id');
+        return $this->hasMany('App\komentar','users_id','id');
+    }
+    public function tugas_dosen()
+    {
+        return $this->hasMany('App\tugas_dosen','dosen_id','id');
+    }
+    public function materi_dosen()
+    {
+        return $this->hasMany('App\materi_dosen','dosen_id','id');
     }
     public function like()
     {
