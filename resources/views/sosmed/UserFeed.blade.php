@@ -27,7 +27,7 @@
                             </div>
                         </div>
                             <div class="card-body">
-                            @foreach($f->komentar_dosen as $kd)
+                            @foreach($f->komentar as $kd)
                                 <img src="{{asset('img/test.jpg')}}" id="profilKomen" alt="..."  class="img-fluid border border-info rounded-circle">
                                 @if($kd->users_id >= 6280000 && $kd->users_id <= 6289999 )
                                 <span class="card-title">{{$kd->dosen->nama}}</span>
@@ -43,7 +43,8 @@
                                 <img src="{{asset('img/test.jpg')}}" id="profilKomenUser" alt="..."  class="img-fluid border border-info rounded-circle ">
                                     @csrf
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
-                                    <input type="hidden" name="users" id="user" value="{{$f->dosen_id}}">
+                                    <input type="hidden" name="users" id="user" value="{{$user->id}}">
+                                    <input type="hidden" name="page" id="page" value="userfeed">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>
@@ -94,6 +95,7 @@
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
                                     <input type="hidden" name="users" id="users" value="{{$user->id}}">
+                                    <input type="hidden" name="page" id="page" value="userfeed">
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>
                                 

@@ -14,7 +14,7 @@
 /* endSideBar */
 
 
-/* TimeLine */
+/* TimeLine(beranda) */
 textarea {
     resize: none;
     overflow: hidden;
@@ -30,6 +30,10 @@ textarea {
 
 #profilSos{
     width: 7%;
+}
+
+div.jkom{
+    text-align: right;
 }
 
 .card-body #profilKomen{
@@ -48,6 +52,13 @@ textarea {
     font-size: 15px; 
     width: 80%;
     height: 30px;
+}
+
+/* edit */
+
+#preview{
+    width: 100px;
+    height: 100px;
 }
 /* endTimeLine*/
 

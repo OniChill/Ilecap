@@ -26,4 +26,8 @@ class mahasiswa extends Model
     {
         return $this->hasMany('App\kelas','user_id','id');
     }
+    public function like()
+    {
+        return $this->hasMany('App\like');
+    }
 }

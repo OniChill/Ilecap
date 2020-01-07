@@ -90,20 +90,35 @@ class DosenController extends Controller
 	    'nama' => 'required',
 	    'password' => 'required',
         'alamat' => 'required',
-        'no_hp' => 'required'
+        'no_hp' => 'required',
     ]);
- 
-    $dosen = dosen::find($id);
-    $dosen->nama = $request->nama;
-    $dosen->password = $request->password;
-    $dosen->alamat = $request->alamat;
-    $dosen->no_hp = $request->no_hp;
+
+   
+    $profil =$request->profil;
+    dd($profil);
+
+    dd($profil);
+    if (!$profil) {
+        $dosen = dosen::find($id);
+        $dosen->nama = $request->nama;
+        $dosen->password = $request->password;
+        $dosen->alamat = $request->alamat;
+        $dosen->no_hp = $request->no_hp;
+    }else{
+        $dosen = dosen::find($id);
+        $dosen->nama = $request->nama;
+        $dosen->img = $profil;
+        $dosen->password = $request->password;
+        $dosen->alamat = $request->alamat;
+        $dosen->no_hp = $request->no_hp;
+    }
+
     if($dosen->save()){
         Session::flash('sukses','edit berhasil');
     }else{
         Session::flash('gagal','edit GAGAL');
     }
-    return redirect('/dosen');
+    return redirect('/sosmed');
 }
     
 

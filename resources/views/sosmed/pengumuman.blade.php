@@ -7,10 +7,8 @@
                     @csrf
                     <div class="form-group text-center">
                         <textarea class="form-control" name="newPost" id="post" placeholder="write something...."></textarea>
-
                         <input type="hidden" name="user" id="user" value="{{$user->id}}">
-                        <input type="hidden" name="page" id="page" value="beranda">
-
+                        <input type="hidden" name="page" id="page" value="pengumuman">
                     </div>
                         <button type="submit" class="btn btn-primary">post</button>
                 </form>
@@ -44,7 +42,7 @@
                                         @csrf
                                         <input type="hidden" name="postId" id="user" value="{{$f->id}}">
                                         <input type="hidden" name="userId" id="user" value="{{$user->id}}">
-                                        <input type="hidden" name="page" id="page" value="beranda">
+                                        <input type="hidden" name="page" id="page" value="pengumuman">
                                         <button type="submit" class="like">
                                             <i class="fas fa-thumbs-up"> Like</i>
                                         </button>
@@ -74,7 +72,7 @@
                                     @csrf
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
-                                    <input type="hidden" name="page" id="page" value="beranda">
+                                    <input type="hidden" name="page" id="page" value="pengumuman">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
                                     <button type="submit" class="btn btn-outline-danger">Kirim</button>
                                 </form>

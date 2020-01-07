@@ -16,11 +16,6 @@ class CreateKomentarTable extends Migration
         Schema::create('komentar', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->Integer('tb_feed_id')->length(10)->unsigned();
-            $table->foreign('tb_feed_id')
-            ->references('id')
-            ->on('tb_feed')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->Integer('users_id')->length(10)->unsigned();
           
 
