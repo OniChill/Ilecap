@@ -44,6 +44,7 @@ class SosMedController extends Controller
 
     public function pengumuman(Request $request)
     {
+       
         if($request->session()->get('id_dosen')){
             $userId = $request->session()->get('id_dosen');
             $user = dosen::find($userId);
