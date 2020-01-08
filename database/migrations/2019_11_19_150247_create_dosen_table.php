@@ -18,6 +18,7 @@ class CreateDosenTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_hp');
+            $table->text('img');
             
             $table->timestamps();
         });

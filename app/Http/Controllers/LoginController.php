@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\dosen;
 use App\mahasiswa;
+
 class LoginController extends Controller
 {
     public function index()
@@ -17,10 +18,10 @@ class LoginController extends Controller
         $pass = $request->pass;
         if ( count(dosen::where(['id'=>$id,'password'=>$pass])->get()) > 0 ) {
             $request->session()->put('id_dosen',$id);
-            return redirect('/chat');
+            return redirect('/sosmed');
         }elseif(count(mahasiswa::where(['id'=>$id,'password'=>$pass])->get()) > 0 ){
             $request->session()->put('id_mahasiswa',$id);
-            return  redirect('/chat');
+            return  redirect('/sosmed');
         }else{
             dd('anda siapa login" sembarangan');
         }
@@ -29,6 +30,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('id_dosen');
+        $request->session()->forget('id_mahasiswa');
         return redirect('login1');
     }
 }

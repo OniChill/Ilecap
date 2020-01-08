@@ -16,9 +16,9 @@ class CreateTbFeedTable extends Migration
         Schema::create('tb_feed', function (Blueprint $table) {
             $table->Increments('id');
             $table->Integer('users_id')->length(10)->unsigned();
-
             $table->text('feed');
             $table->text('gambar');
+            $table->Integer('pengumuman')->length(1)->unsigned();
             $table->timestamps();
         });
     }

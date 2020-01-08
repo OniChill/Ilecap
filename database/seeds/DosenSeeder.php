@@ -21,7 +21,8 @@ class DosenSeeder extends Seeder
     	      // insert data ke table dosen menggunakan Faker
               dosen::create([
     			'id' => $faker->numberBetween($min = 6280000, $max = 6289999),
-    			'nama' => $faker->name,
+                'nama' => $faker->name,
+                'img' => "test.jpg",
     			'password' => $faker->password,
                 'alamat' => $faker->address,
                 'no_hp' => $faker->phoneNumber

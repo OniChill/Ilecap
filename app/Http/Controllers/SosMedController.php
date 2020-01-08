@@ -10,7 +10,7 @@ use App\mahasiswa_feed;
 use App\tb_feed;
 use App\ukm;
 use App\like;
-
+use Image;
 use App\komentar;
 
 class SosMedController extends Controller
@@ -110,13 +110,24 @@ class SosMedController extends Controller
             'newPost' => 'required',
             'user' => 'required'
         ]);
+        $nama_file='';
+if($request->postImg){
+// menyimpan data file yang diupload ke variabel $file
+    $image = $request->file('postImg');
+    $nama_file = time()."_".$image->getClientOriginalName();
+// isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'img/PImg';
+    $img = Image::make($image->path());
+        $img->resize(635, 635, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($tujuan_upload.'/'.$nama_file);
+}
         if($request->page == 'beranda'){
             //tambah data ke tabel tb_feed ke beranda
             tb_feed::create([
                 'feed' => $request->newPost,
                 'users_id' => $request->user,
-                'gambar' => '',
-                'like' => '0',
+                'gambar' => $nama_file,
                 'pengumuman' => '0',
                 
             ]);
@@ -126,8 +137,7 @@ class SosMedController extends Controller
             tb_feed::create([
                 'feed' => $request->newPost,
                 'users_id' => $request->user,
-                'gambar' => '',
-                'like' => '0',
+                'gambar' => $nama_file,
                 'pengumuman' => '1',
                 
             ]);

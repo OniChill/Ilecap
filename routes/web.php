@@ -31,6 +31,9 @@ route::put('/dosen/update/{id}','DosenController@update');
 Route::get('/dosen/hapus/{id}', 'DosenController@destroy');
 Route::get('/dosen/cari', 'DosenController@cari');
 
+//Mahasiswa controller
+route::put('/mahasiswa/update/{id}','MahasiswaController@update');
+
 //Controller Login
 route::get('/login1','LoginController@index');
 route::post('/login2','LoginController@login');

@@ -2,31 +2,42 @@
 
 @section('konten')
 <div class="container mt-4 pt-1" id="konten" >
+            @if($user->humas == 1)
                 <!-- //TextArea buat ngepost -->
-                <form action="/testcreate" method="POST">
+                <form action="/testcreate" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group text-center">
                         <textarea class="form-control" name="newPost" id="post" placeholder="write something...."></textarea>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input form-control-file border" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01" accept="image/*" name="postImg"   onchange="tampilkanPreview(this,'preview')">
+                            <label class="custom-file-label" for="inputGroupFile01"></label>
+                        </div>
                         <input type="hidden" name="user" id="user" value="{{$user->id}}">
                         <input type="hidden" name="page" id="page" value="pengumuman">
                     </div>
                         <button type="submit" class="btn btn-primary">post</button>
                 </form>
+                @endif
                     <!-- //endTextArea -->
 
                 @foreach($feed as $f)
                      <!-- //post dosen -->
                      <div class="card text-white bg-primary mb-3 mt-2">
                         <div class="card-header">
-                            <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
-                            @if($f->users_id >= 6280000 && $f->users_id <= 6289999 )
+                        @if($f->users_id >= 6280000 && $f->users_id <= 6289999 )
+                            <img src="{{asset('img/'.$f->dosen->img)}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
                             <span>{{$f->dosen->nama}}</span>
                             @elseif($f->users_id >= 11000000 && $f->users_id <= 19000000 )
+                            <img src="{{asset('img/'.$f->mahasiswa->img)}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
                             <span>{{$f->mahasiswa->nama}}</span>
                             @else
                             <span>Anda Nyasar??</span>
                             @endif
                             <p>{{$f->feed}}</p>
+                            @if($f->gambar)
+                            <img src="{{asset('img/PImg/'.$f['gambar'])}}" alt="..." width="635">
+                            @endif
                             <div class="row">
                                 <div class="col-6">
                                     <span>{{$f->like->count()}} like</span>

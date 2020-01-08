@@ -80,7 +80,13 @@
 	        </button>
 	      </div>
 	      <div class="modal-body text-center">
-		  <form action="{{url('dosen/update/'.$user['id'])}}" method="post">
+		  @if($user->id >= 6280000 && $user->id <= 6289999 )
+		  <form action="{{url('dosen/update/'.$user['id'])}}" method="post" enctype="multipart/form-data">
+		  @elseif($user->id >= 11000000 && $user->id <= 19000000 )
+		  <form action="{{url('mahasiswa/update/'.$user['id'])}}" method="post" enctype="multipart/form-data">
+			@else
+				<span>Anda Siapa??</span>
+			@endif
 		  @csrf
 		  @method('PUT')
 		  <!-- <img src="{{asset('img/test.jpg')}}" id="editprofil" alt="..."  class="img-fluid border border-info rounded-circle mb-3"> -->
@@ -88,7 +94,7 @@
 		  <div class="input-group-sm mb-3">
 				<div class="custom-file">
 					<input type="file" class="custom-file-input form-control-file border" id="inputGroupFile01"
-					aria-describedby="inputGroupFileAddon01" accept="image/*" name="profil" value="{{$user->img}}"  onchange="tampilkanPreview(this,'preview')">
+					aria-describedby="inputGroupFileAddon01" accept="image/*" name="profil"   onchange="tampilkanPreview(this,'preview')">
 					<label class="custom-file-label" for="inputGroupFile01">{{$user->img}}</label>
 				</div>
 			</div>

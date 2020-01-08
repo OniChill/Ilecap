@@ -24,12 +24,14 @@ class MahasiswaSeeder extends Seeder
     		mahasiswa::create([
     			'id' => $faker->numberBetween($min = 11000000, $max = 19000000),
     			'nama' => $faker->name,
+    			'img' => "test.jpg",
     			'password' => $faker->password,
                 'alamat' => $faker->address,
                 'no_hp' => $faker->phoneNumber,
                 'jurusan' => Arr::random($jurusan),
                 'email' => $faker->unique()->safeEmail,
-                'jenis_kelamin' => $faker->randomElement($array = array ('laki-laki','perempuan'))
+                'jenis_kelamin' => $faker->randomElement($array = array ('laki-laki','perempuan')),
+                'humas' => $faker->numberBetween($min = 0, $max = 1)
     		]);
     }
 }

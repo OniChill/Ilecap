@@ -21,6 +21,8 @@ class CreateMahasiswaTable extends Migration
             $table->string('alamat');
             $table->string('no_hp');
             $table->string('jenis_kelamin');
+            $table->integer('humas');
+            $table->text('img');
             
             
             $table->timestamps();
