@@ -51,7 +51,7 @@ route::post('/sosmed/like','SosMedController@like');
 route::get('/chat','chatController@index');
 route::get('/chat_kelas/{id}','chat_isicontroller@isi');
 route::get('/tambah_anggota/{id}','kls_anggotacontroller@indextambah');
-route::post('/add_toclass','kls_anggotacontroller@store');
+route::get('/add_toclass/{id}/{idkls}','kls_anggotacontroller@store');
 route::post('/send','chat_isicontroller@store');
 
 
@@ -71,3 +71,5 @@ route::get('/tugas/{id}','tugascontroller@index');
 route::get('/add_tugas/{id}','tugascontroller@indexadd');
 route::post('/upload_tugas','tugascontroller@store');
 route::get('/jawab_tugas/{id}','tugascontroller@indexjawab');
+route::post('/jawab','tugascontroller@storejawaban');
+route::get('/data_tugas/{id}','tugascontroller@showdata');

@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body>
-<form method="post" action="/add_toclass">
+<form method="get" >
                   @csrf
 
             <table>
@@ -42,7 +42,7 @@
              
   
                 <td><input style="border:none;outline:none;background-color:rgba(0, 0, 0, 0);
-                        color:black;" type="text" hidden value="{{$nama_kelas->id}}" name="id"></td>
+                        color:black;" type="text" hidden value="{{$nama_kelas->id}}" name="idkls"></td>
                 </tr>
                 <tr>
                     <td><a href="/chat"><button type="button" class="btn btn-dark">Back</button></a></td>
@@ -69,11 +69,12 @@
                     @foreach($users as $a)
                 <tr>
                   <td><input style="border:none;outline:none;background-color:rgba(0, 0, 0, 0);
-                        color:black;" type="text" value="{{$a->id}}" name="id_user"></td>
+                        color:black;" type="text" value="{{$a->id}}" readonly></td>
                   <td>{{$a->nama}}</td>
                   <td>
                   <!-- Button trigger modal -->
-                  <input type="submit"   value="kirim">
+              
+                  <a href="/add_toclass/{{$a->id}}/{{$nama_kelas->id}}"><button type="button" > Kirim </button></a>
   
 
                   </td>

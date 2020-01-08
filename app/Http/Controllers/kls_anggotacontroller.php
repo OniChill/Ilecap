@@ -60,8 +60,8 @@ class kls_anggotacontroller extends Controller
     {
         
         detail_anggota_kelas::create([
-            'kelas_id'=> $request->id,
-          'user_id' => $request->id_user,
+            'kelas_id'=> $request->idkls,
+          'user_id' => $request->id,
             
         ]);
         return redirect('/chat');
