@@ -11,9 +11,12 @@
                      <!-- //post dosen -->
                      <div class="card text-white bg-primary mb-3 mt-2">
                         <div class="card-header">
-                            <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
+                        <img src="{{asset('img/'.$f->dosen->img)}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
                             <span>{{$f->dosen->nama}}</span>
                             <p>{{$f->feed}}</p>
+                            @if($f->gambar)
+                            <img src="{{asset('img/PImg/'.$f['gambar'])}}" alt="..." width="635">
+                            @endif
                             <hr>
                             <div class="row">
                                 <div class="col-6 text-center">
@@ -60,9 +63,12 @@
                 @foreach($feed as $f)
                 <div class="card text-white bg-primary mb-3 mt-2">
                         <div class="card-header">
-                            <img src="{{asset('img/test.jpg')}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
+                        <img src="{{asset('img/'.$f->mahasiswa->img)}}" id="profilSos" alt="..."  class="img-fluid border border-info rounded-circle">
                             <span>{{$f->mahasiswa->nama}}</span>
                             <p>{{$f->feed}}</p>
+                            @if($f->gambar)
+                            <img src="{{asset('img/PImg/'.$f['gambar'])}}" alt="..." width="635">
+                            @endif
                             <hr>
                             <div class="row">
                                 <div class="col-6 text-center">

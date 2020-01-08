@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\dosen;
 use Illuminate\Support\Facades\Crypt;
 use Session;
+use Image;
 
 class DosenController extends Controller
 {
@@ -95,9 +96,13 @@ class DosenController extends Controller
 
    
     $profil =$request->profil;
-    dd($profil);
-
-    dd($profil);
+// menyimpan data file yang diupload ke variabel $file
+    $image = $request->file('profil');
+    $nama_file = time()."_".$image->getClientOriginalName();
+// isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'img';
+    $img = Image::make($image->path());
+    $img->resize(500, 500)->save($tujuan_upload.'/'.$nama_file);
     if (!$profil) {
         $dosen = dosen::find($id);
         $dosen->nama = $request->nama;
@@ -107,7 +112,7 @@ class DosenController extends Controller
     }else{
         $dosen = dosen::find($id);
         $dosen->nama = $request->nama;
-        $dosen->img = $profil;
+        $dosen->img = $nama_file;
         $dosen->password = $request->password;
         $dosen->alamat = $request->alamat;
         $dosen->no_hp = $request->no_hp;
