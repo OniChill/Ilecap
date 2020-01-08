@@ -1,4 +1,4 @@
-@extends('template.desain')
+@extends('template.desain2')
 @extends('Chat.chat_kelas')
 @section('namakelas')
 @if($cek=="dosen")
@@ -12,25 +12,47 @@
 </p> 
 
 @elseif($cek=="mahasiswa")
-<p>{{$nama_kelas->kelas->nama_kelas}} <a href="/materi/{{$nama_kelas->kelas_id}}">
+<p>{{$nama_kelas->nama_kelas}} <a href="/materi/{{$nama_kelas->id}}">
 <button type="button" class="btn btn-outline-primary">Materi</button></a>
-</p> </p>
+<a href="/tugas/{{$nama_kelas->id}}">
+<button type="button" class="btn btn-outline-primary">Tugas Mahasiswa</button></a></p>
+
 
 @endif
 @endsection
 
 @section('chat')
-@for($i=0;$i<=2;$i++)
+@foreach($chat as $cm)
 				<li class="sent">
 					<h3>Me :</h3>
-					<p>#zonk </p>
+					<p>{{$cm->chat}}</p>
 				</li>
-        @endfor
-        @for($i=0;$i<=2;$i++)
+        @endforeach
+        @foreach($chat_all as $ct)
 				<li class="replies">
-					<h3>: Them </h3>
-					<p>Zonk</p>
+					<h3>:{{$ct->nama}} </h3>
+					<p>{{$ct->chat}}</p>
           
           </li>
-         @endfor
+         @endforeach
 @endsection
+@section('a')
+<form action="/send" method="post">
+@csrf
+		<div class="message-input">
+			<div class="wrap">
+			<input type="text" placeholder="Write your message..." name="pesan" />
+			<input hidden type="text" placeholder="Write your" name="id" value="{{$user->id}}"/>
+			<input hidden type="text" placeholder="Write your" name="nama" value="{{$user->nama}}"/>
+			<input hidden type="text" placeholder="Write your" name="klsid" value="{{$nama_kelas->id}}"/>
+			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+
+@endsection
+

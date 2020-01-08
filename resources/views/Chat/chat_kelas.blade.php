@@ -19,7 +19,7 @@
             @endforeach	
 @elseif($cek=="mahasiswa")
 @foreach($kls_mhs as $k)
-<a href="/chat_kelas/{{$k->id}}">
+<a href="/chat_kelas/{{$k->kelas_id}}">
     			<ul>
 				<li class="contact active">
 				    <div id="kelas-bar">
@@ -49,4 +49,6 @@
 		</div>
 	@endif
 	@endsection
+
+	
 

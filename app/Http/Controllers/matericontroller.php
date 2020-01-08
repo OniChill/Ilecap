@@ -1,14 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\dosen_feed;
+use Illuminate\Http\Request;    
 use App\dosen;
 use App\mahasiswa;
-use App\mahasiswa_feed;
-use App\komentar_dosen;
-use App\komentar_mhs;
-use App\Post;
 use App\kelas;
 use App\detail_anggota_kelas;
 use App\materi_dosen;

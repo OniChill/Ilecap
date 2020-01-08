@@ -14,5 +14,9 @@ class detail_anggota_kelas extends Model
     {
         return $this->belongsTo('App\kelas');
     }
+    public function mahasiswa()
+    {
+        return $this->belongsTo('App\mahasiswa');
+    }
     
 }

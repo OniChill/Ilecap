@@ -21,8 +21,7 @@ class CreateTugasDosenTable extends Migration
             ->on('dosen')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->text('materi');
-            //
+                       //
             $table->Integer('kelas_id')->length(10)->unsigned();
             $table->foreign('kelas_id')
             ->references('id')
@@ -31,7 +30,6 @@ class CreateTugasDosenTable extends Migration
             ->onDelete('cascade');
             $table->string('nama_tugas');
             $table->string('deskripsi');
-            $table->text('file');
             $table->timestamps('');
         });
     }

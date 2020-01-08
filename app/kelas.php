@@ -27,4 +27,15 @@ class kelas extends Model
     {
         return $this->hasMany('App\materi_dosen','kelas_id','id');
     }
+
+    public function chat_kelas()
+    {
+        return $this->hasMany('App\chat_kelas','kelas_id','id');
+    }
+
+    public function tugas_dosen()
+    {
+        return $this->hasMany('App\tugas_dosen','kelas_id','id');
+    }
+
 }
