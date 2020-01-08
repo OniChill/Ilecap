@@ -8,8 +8,13 @@ use App\mahasiswa;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if($request->session()->get('id_dosen')){
+            return  redirect('/sosmed');
+        }elseif ($request->session()->get('id_mahasiswa')) {
+            return  redirect('/sosmed');
+        }
         return view('Login.login');
     }
     public function login(Request $request)

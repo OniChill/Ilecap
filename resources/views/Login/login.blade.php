@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6 login-form-1">
                         <h3>Welcome <br>to ILecap</h3>
-                        <img style="width : 100%; height :100%;" src="/icon/icon8/Mobile-login-Cristina.jpg" alt="404">
+                        <img width="400" src="{{asset('/img/ilecap/login.jpg')}}" alt="404">
                     </div>
                     <div class="col-md-6 login-form-2">
                         <h3>Login for Form 2</h3>
