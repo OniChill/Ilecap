@@ -29,7 +29,6 @@ class SosMedController extends Controller
             $userId = $request->session()->get('id_mahasiswa');
             $user = mahasiswa::find($userId);
         }
-        
         $feed = tb_feed::orderBy('created_at','desc')->get();
 
         //mengurutkan feed dari tanggal terbaru

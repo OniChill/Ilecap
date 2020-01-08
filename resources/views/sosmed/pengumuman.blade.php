@@ -39,9 +39,9 @@
                             <img src="{{asset('img/PImg/'.$f['gambar'])}}" alt="..." width="635">
                             @endif
                             <div class="row">
-                                <div class="col-6">
-                                    <span>{{$f->like->count()}} like</span>
-                                </div>
+                                        <button type="submit" style="border: 0px solid #000; background: transparent; color: #fff;" class="like">
+                                            <i class="fas fa-thumbs-up"> Like</i>
+                                        </button>
                                 <div class="col-6 jkom">
                                     <span >{{$f->komentar->count()}} Komentar</span>
                                 </div>
@@ -85,7 +85,7 @@
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
                                     <input type="hidden" name="page" id="page" value="pengumuman">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
-                                    <button type="submit" class="btn btn-outline-danger">Kirim</button>
+                                    <button type="submit" class="btn btn-outline-light" style="width: 70px;height: 30px;margin-bottom: 20px;padding-bottom: 30px;border-radius: 50px">Kirim</button>
                                 </form>
                                 
                             </div>

@@ -47,7 +47,8 @@ class DosenController extends Controller
     	]);
  
         dosen::create([
-    		'nama' => $request->nama,
+            'nama' => $request->nama,
+            'img'=>'test.jpg',
     		'password' => $request->password,
     		'alamat' => $request->alamat,
     		'no_hp' => $request->no_hp
@@ -96,13 +97,7 @@ class DosenController extends Controller
 
    
     $profil =$request->profil;
-// menyimpan data file yang diupload ke variabel $file
-    $image = $request->file('profil');
-    $nama_file = time()."_".$image->getClientOriginalName();
-// isi dengan nama folder tempat kemana file diupload
-    $tujuan_upload = 'img';
-    $img = Image::make($image->path());
-    $img->resize(500, 500)->save($tujuan_upload.'/'.$nama_file);
+
     if (!$profil) {
         $dosen = dosen::find($id);
         $dosen->nama = $request->nama;
@@ -110,6 +105,13 @@ class DosenController extends Controller
         $dosen->alamat = $request->alamat;
         $dosen->no_hp = $request->no_hp;
     }else{
+        // menyimpan data file yang diupload ke variabel $file
+    $image = $request->file('profil');
+    $nama_file = time()."_".$image->getClientOriginalName();
+// isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'img';
+    $img = Image::make($image->path());
+    $img->resize(500, 500)->save($tujuan_upload.'/'.$nama_file);
         $dosen = dosen::find($id);
         $dosen->nama = $request->nama;
         $dosen->img = $nama_file;

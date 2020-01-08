@@ -42,7 +42,7 @@
                             
                             <div class="row mt-4">
                                 <div class="col-6">
-                                    <span>{{$f->like->count()}} like</span>
+                                    <span>{{$f->like->count()}}  like</span>
                                 </div>
                                 <div class="col-6 jkom">
                                     <span >{{$f->komentar->count()}} Komentar</span>
@@ -56,7 +56,7 @@
                                         <input type="hidden" name="postId" id="user" value="{{$f->id}}">
                                         <input type="hidden" name="userId" id="user" value="{{$user->id}}">
                                         <input type="hidden" name="page" id="page" value="beranda">
-                                        <button type="submit" class="like">
+                                        <button type="submit" style="border: 0px solid #000; background: transparent; color: #fff;" class="like">
                                             <i class="fas fa-thumbs-up"> Like</i>
                                         </button>
                                     </form>
@@ -87,7 +87,7 @@
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
                                     <input type="hidden" name="page" id="page" value="beranda">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
-                                    <button type="submit" class="btn btn-outline-danger">Kirim</button>
+                                    <button type="submit" class="btn btn-outline-light" style="width: 70px;height: 30px;margin-bottom: 20px;padding-bottom: 30px;border-radius: 50px">Kirim</button>
                                 </form>
                                 
                             </div>
