@@ -25,12 +25,13 @@
                 <td>:</td>
                 <td><input type="text"  value="{{$jawab->kelas->nama_kelas}}"> <input hidden type="text" name="idkls" value="{{$jawab->kelas_id}}"></td>
             </tr>
+            
             <tr>
                 <td>Upload File Jawaban </td>
                 <td>:</td>
                 <td><input type="file"  name="jawab"></td>
             </tr>
-
+          
           
         </table>
         <button type="submit">Upload</button> 

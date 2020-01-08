@@ -18,10 +18,10 @@ class LoginController extends Controller
         $pass = $request->pass;
         if ( count(dosen::where(['id'=>$id,'password'=>$pass])->get()) > 0 ) {
             $request->session()->put('id_dosen',$id);
-            return redirect('/sosmed');
+            return redirect('/chat');
         }elseif(count(mahasiswa::where(['id'=>$id,'password'=>$pass])->get()) > 0 ){
             $request->session()->put('id_mahasiswa',$id);
-            return  redirect('/sosmed');
+            return  redirect('/chat');
         }else{
             dd('anda siapa login" sembarangan');
         }

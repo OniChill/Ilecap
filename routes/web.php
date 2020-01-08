@@ -76,3 +76,7 @@ route::post('/upload_tugas','tugascontroller@store');
 route::get('/jawab_tugas/{id}','tugascontroller@indexjawab');
 route::post('/jawab','tugascontroller@storejawaban');
 route::get('/data_tugas/{id}','tugascontroller@showdata');
+
+
+//ukm
+route::get('/ukm_chat/{ukm_id}/{id}','chat_ukmController@index');

@@ -13,7 +13,7 @@ class CreateChatHumasTable extends Migration
      */
     public function up()
     {
-        Schema::create('chat_humas', function (Blueprint $table) {
+        Schema::create('chat_kelashumas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('humas_id')->length(10)->unsigned();
             $table->foreign('humas_id')
@@ -35,6 +35,6 @@ class CreateChatHumasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chat_humas');
+        Schema::dropIfExists('chat_kelashumas');
     }
 }

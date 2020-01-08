@@ -29,7 +29,7 @@
 <a href="/chat"><button type="button" class="btn btn-dark">Back</button></a>
 @if($cek=="dosen")
 <a href="/add_tugas/{{$nama_kelas->id}}"><button type="button" class="btn btn-primary">Tambah Tugas {{$nama_kelas->nama_kelas}}</button></a>
-
+<a href="/data_tugas/{{$nama_kelas->id}}"><button type="button" class="btn btn-primary">Lihat Tugas Mahasiswa {{$nama_kelas->nama_kelas}}</button></a>
 @else($cek=="mahasiswa")
 
 @endif
@@ -42,7 +42,7 @@
                   <th>Nama Tugas</th>
                   <th>Deskripsi</th>
                   <th>DiUpload</th>
-                  <th>Pengumpul</th>
+                  
                   @else($cek=="mahasiswa")
                   <th>Nama Materi</th>
                   <th>jenis FIle</th>
@@ -61,13 +61,14 @@
                   <td>{{$tgs->nama_tugas}}</td>
                   <td>{{$tgs->deskripsi}}</td>
                   <td>{{$tgs->created_at}}</td>
-                  <td><a href="/data_tugas/{{$tgs->id}}"><button type="button" class="btn btn-primary">Lihat Tugas Mahasiswa {{$nama_kelas->nama_kelas}}</button></a></td>
+                  
                   </tr>
                   @else($cek=="mahasiswa")
                   <tr>
                   <td>{{$tgs->nama_tugas}}</td>
                   <td>{{$tgs->deskripsi}}</td>
                   <td>{{$tgs->created_at}}</td>
+
                   <td><a href="/jawab_tugas/{{$tgs->id}}"><button type="submit" class="btn btn-primary">Upload File</button></a></td>
                   </tr>
                   @endif

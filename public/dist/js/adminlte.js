@@ -890,7 +890,7 @@
       DIRECT_CHAT: '.direct-chat'
     };
     var ClassName = {
-      DIRECT_CHAT_OPEN: 'direct-chat-contacts-open'
+      DIRECT_chat_kelasOPEN: 'direct-chat-contacts-open'
     };
     /**
      * Class Definition
@@ -907,7 +907,7 @@
       var _proto = DirectChat.prototype;
 
       _proto.toggle = function toggle() {
-        $(this._element).parents(Selector.DIRECT_CHAT).first().toggleClass(ClassName.DIRECT_CHAT_OPEN);
+        $(this._element).parents(Selector.DIRECT_CHAT).first().toggleClass(ClassName.DIRECT_chat_kelasOPEN);
         var toggledEvent = $.Event(Event.TOGGLED);
         $(this._element).trigger(toggledEvent);
       } // Static

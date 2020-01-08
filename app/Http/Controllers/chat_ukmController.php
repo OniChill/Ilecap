@@ -6,42 +6,39 @@ use App\dosen;
 use App\mahasiswa;
 use App\kelas;
 use App\detail_anggota_kelas;
-use App\chat_kelas;
+use App\chat_ukm;
 use App\data_angota_ukm;
-class chat_isicontroller extends Controller
+
+class chat_ukmController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function isi(Request $request , $id)
+    public function index(Request $request , $id,$ukm_id)
     {
+        
         if($request->session()->get('id_dosen')){
             $userId = $request->session()->get('id_dosen');
             $user = dosen::find($userId);
             $cek = 'dosen';
-            $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
-            $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
-            $nama_kelas= kelas::find($id);
-            $chat = chat_kelas::orderBy('created_at', 'asc')->where('user_id',$userId)->where('kelas_id',$id)->get();
-            $chat_kelas = chat_kelas::orderBy('created_at', 'asc')->where('kelas_id',$id)->where('user_id','!=',$userId)->get();
-            $ukm_mhs = data_angota_ukm::where('mahasiswa_id',$id);
+            $ukm = data_angota_ukm::find($id);
+            $chat = chat_ukm::orderBy('created_at', 'asc')->where('anggota_id',$id)->where('ukm_id',$ukm_id)->get();
+           
         }elseif ($request->session()->get('id_mahasiswa')) {
             $userId = $request->session()->get('id_mahasiswa');
             $user = mahasiswa::find($userId);
             $cek = 'mahasiswa';
-            $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
-                
-            $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
-            $nama_kelas= kelas::find($id);
-            $ukm_mhs = data_angota_ukm::where('mahasiswa_id',$id);
-            $chat = chat_kelas::orderBy('created_at', 'asc')->where('user_id',$userId)->where('kelas_id',$id)->get();
-            $chat_kelas = chat_kelas::orderBy('created_at', 'asc')->where('kelas_id',$id)->where('user_id','!=',$userId)->get();
+            $ukm =data_angota_ukm::find($ukm_id);
+            $chat = chat_ukm::orderBy('created_at', 'asc')->where('anggota_id',$id)->where('ukm_id',$ukm_id)->get();
         }
 
-    return view('Chat.chat',compact('user','kls','cek','nama_kelas','kls_mhs','chat','chat_kelas','ukm_mhs'));
+    return view('Chat.chat_ukm',compact('user','cek','ukm','chat'));
     }
+
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -61,14 +58,7 @@ class chat_isicontroller extends Controller
      */
     public function store(Request $request)
     {
-        chat_kelas::create([
-            'kelas_id'=> $request->klsid,
-          'user_id' => $request->id,
-            'chat' =>$request->pesan,
-            'nama' =>$request->nama,
-        ]);
-        
-    return Redirect()->back();
+        //
     }
 
     /**

@@ -25,11 +25,24 @@
 				    <div id="kelas-bar">
 			                <button id="addcontact" ><i aria-hidden="true"></i> <span>{{$k->kelas['nama_kelas']}}</span></button>
 		            </div>
-				</li>
+				</li>	
 			</ul>
 			</a>
             <br>
 			@endforeach	
+
+@foreach($ukm_mhs as $ukm)
+<a href="/ukm_chat/{{$ukm->ukm_id}}/{{$ukm->id}}">
+    			<ul>
+				<li class="contact active">
+				    <div id="kelas-bar">
+			                <button id="addcontact" ><i aria-hidden="true"></i> <span>{{$ukm->ukm['nama_ukm']}}</span></button>
+		            </div>
+				</li>	
+			</ul>
+			</a>
+            <br>
+@endforeach
 @endif
 @endsection
 @yield('isi')

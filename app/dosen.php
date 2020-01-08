@@ -26,7 +26,7 @@ class dosen extends Model
     {
         return $this->hasMany('App\tugas_dosen','dosen_id','id');
     }
-    
+
     public function materi_dosen()
     {
         return $this->hasMany('App\materi_dosen','dosen_id','id');
@@ -36,6 +36,8 @@ class dosen extends Model
     {
         return $this->hasMany('App\chat_kelas','user_id','id');
     }
+
+    
     public function like()
     {
         return $this->hasMany('App\like','users_id');
