@@ -8,6 +8,7 @@ use App\kelas;
 use App\detail_anggota_kelas;
 use App\materi_dosen;
 use App\tugas_dosen;
+use App\data_tugas_mahasiswa;
 
 use Session;
 
@@ -70,6 +71,33 @@ class tugascontroller extends Controller
     return view('tugas.tugasadd',compact('user','kls','cek','nama_kelas','kls_mhs','tugas'));
 }
 
+public function showdata(Request $request,$id)
+{
+    if($request->session()->get('id_dosen')){
+        $userId = $request->session()->get('id_dosen');
+        $user = dosen::find($userId);
+        $cek = 'dosen';
+        $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+        $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+        $nama_kelas= kelas::find($id);
+        $tugas=tugas_dosen::orderBy('created_at', 'desc')->where('dosen_id',$userId)->where('kelas_id',$id)->get();
+        $data = data_tugas_mahasiswa::find($id);
+      
+        
+    }elseif ($request->session()->get('id_mahasiswa')) {
+        $userId = $request->session()->get('id_mahasiswa');
+        $user = mahasiswa::find($userId);
+        $cek = 'mahasiswa';
+        $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+        $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+        $nama_kelas= kelas::find($id);
+        $tugas=tugas_dosen::orderBy('created_at', 'desc')->where('kelas_id',$id)->get();
+        $data = data_tugas_mahasiswa::find($id);
+}
+return view('tugas.data',compact('user','kls','cek','nama_kelas','kls_mhs','tugas','data'));
+}
+
+
 public function indexjawab(Request $request,$id)
 {
     if($request->session()->get('id_dosen')){
@@ -120,6 +148,18 @@ return view('tugas.jawab',compact('user','kls','cek','nama_kelas','kls_mhs','tug
         return redirect()->back();     
     }
 
+
+    public function storejawaban(Request $request)
+    {
+        data_tugas_mahasiswa::create([
+            'id_tugas'=>$request->id,
+    		'mahasiswa_id' => $request->iddsn,
+            'kelas_id' => $request->idkls,
+            'berkas' => $request->file('jawab')->store('jawaban'),
+         
+        ]);
+        return redirect()->back();     
+    }
     /**
      * Display the specified resource.
      *

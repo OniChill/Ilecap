@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3><b><center> Jawaban Tugas</center></b></h3>
-    <form action="/upload_file" method="post" enctype="multipart/form-data">
+    <form action="/jawab" method="post" enctype="multipart/form-data">
     @csrf
         <table>
         <tr>
