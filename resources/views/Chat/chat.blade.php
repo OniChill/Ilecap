@@ -14,8 +14,7 @@
 @elseif($cek=="mahasiswa")
 <p>{{$nama_kelas->nama_kelas}} <a href="/materi/{{$nama_kelas->id}}">
 <button type="button" class="btn btn-outline-primary">Materi</button></a>
-<a href="/tugas/{{$nama_kelas->id}}">
-<button type="button" class="btn btn-outline-primary">Tugas Mahasiswa</button></a></p>
+</p>
 
 
 @endif
