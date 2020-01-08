@@ -108,9 +108,9 @@ return [
 
     'dashboard_url' => 'home',
 
-    'logout_url' => 'logout',
+    'logout_url' => '/logout',
 
-    'login_url' => 'login',
+    'login_url' => '/login1',
 
     'register_url' => 'register',
 
@@ -126,84 +126,49 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-        ],
         ['header' => 'main_navigation'],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Sosmed',
+            'url'         => '/sosmed',
             'icon'        => 'far fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Input'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Data',
+            'icon'    => 'far fa-file',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Dosen',
+                    'url' => '/dosen/create',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'Mahasiswa',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'UKM',
                     'url'  => '#',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Edit'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'text'    => 'Data',
+            'icon'    => 'far fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Dosen',
+                    'url' => '/dosen',
+                ],
+                [
+                    'text'    => 'Mahasiswa',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'UKM',
+                    'url'  => '#',
+                ],
+            ],
         ],
     ],
 

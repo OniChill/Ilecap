@@ -47,7 +47,8 @@ class DosenController extends Controller
     	]);
  
         dosen::create([
-    		'nama' => $request->nama,
+            'nama' => $request->nama,
+            'img'=>'test.jpg',
     		'password' => $request->password,
     		'alamat' => $request->alamat,
     		'no_hp' => $request->no_hp

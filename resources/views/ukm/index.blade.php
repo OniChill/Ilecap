@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Crypt;
 @section('title', 'Ilecap')
 
 @section('content_header')
-<h1>Data Dosen</h1>
+<h1>Data ukm</h1>
 @stop
 
 @section('content')
@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Crypt;
 @else
 
 @endif
-<form action="/dosen/cari" method="GET">
-		<input type="text" name="cari" placeholder="nama dosen.." value="{{ old('cari') }}">
+<form action="/ukm/cari" method="GET">
+		<input type="text" name="cari" placeholder="nama ukm.." value="{{ old('cari') }}">
 		<input type="submit" value="CARI">
 	</form>
     <div class="mt-4 table-responsive">
@@ -33,28 +33,26 @@ use Illuminate\Support\Facades\Crypt;
             <tr>
                 <th>nama</th>
                 <th>Alamat</th>
-                <th>No_hp</th>
                 <th>Aksi</th>
 
             </tr>
-            @foreach ($dosen as $d)
+            @foreach ($ukm as $u)
             <tr>
-                <td>{{$d->nama}}</td>
-                <td>{{$d->alamat}}</td>
-                <td>{{$d->no_hp}}</td>
+                <td>{{$u->nama_ukm}}</td>
+                <td>{{$u->deskripsi}}</td>
                 <td>
-                <a href="dosen/edit/{{ Crypt::encrypt($d->id)}}" class="btn btn-warning">edit</a>
-                <a href="dosen/hapus/{{$d->id}}" class="btn btn-danger">hapus</a>
+                <a href="ukm/edit/{{ Crypt::encrypt($u->id)}}" class="btn btn-warning">edit</a>
+                <a href="ukm/hapus/{{$u->id}}" class="btn btn-danger">hapus</a>
                 </td>
             </tr>
             @endforeach
         </table>
-            Halaman : {{ $dosen->currentPage() }} <br/>
-            Jumlah Data : {{ $dosen->total() }} <br/>
-            Data Per Halaman : {{ $dosen->perPage() }} <br/>
+            Halaman : {{ $ukm->currentPage() }} <br/>
+            Jumlah Data : {{ $ukm->total() }} <br/>
+            Data Per Halaman : {{ $ukm->perPage() }} <br/>
         
         
-            {{ $dosen->links() }}
+            {{ $ukm->links() }}
     </div>
 </div>
 @stop

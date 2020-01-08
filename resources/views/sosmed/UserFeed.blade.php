@@ -49,7 +49,7 @@
                                     <input type="hidden" name="users" id="user" value="{{$user->id}}">
                                     <input type="hidden" name="page" id="page" value="userfeed">
                                     <textarea  id="postkomen" name="komen" placeholder="Hujat???" ></textarea>
-                                    <button type="submit" class="btn btn-outline-danger">Kirim</button>
+                                    <button type="submit" class="btn btn-outline-light" style="width: 70px;height: 30px;margin-bottom: 20px;padding-bottom: 30px;border-radius: 50px">Kirim</button>
                                 </form>
                                 
                             </div>
@@ -72,8 +72,9 @@
                             <hr>
                             <div class="row">
                                 <div class="col-6 text-center">
-                                    <i class="fas fa-thumbs-up"></i>
-                                    <span>Like</span>
+                                <button type="submit" style="border: 0px solid #000; background: transparent; color: #fff;" class="like">
+                                            <i class="fas fa-thumbs-up"> Like</i>
+                                        </button>
                                 </div>
                                 <div class="col-6 text-center">
                                 <i class="fas fa-comment"></i>
@@ -102,7 +103,7 @@
                                     <input type="hidden" name="user" id="user" value="{{$f->id}}">
                                     <input type="hidden" name="users" id="users" value="{{$user->id}}">
                                     <input type="hidden" name="page" id="page" value="userfeed">
-                                    <button type="submit" class="btn btn-outline-danger">Kirim</button>
+                                    <button type="submit" class="btn btn-outline-light" style="width: 70px;height: 30px;margin-bottom: 20px;padding-bottom: 30px;border-radius: 50px">Kirim</button>
                                 </form>
                                 
                             </div>

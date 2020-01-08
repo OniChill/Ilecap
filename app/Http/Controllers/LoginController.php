@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\dosen;
 use App\mahasiswa;
+use App\admin;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,9 @@ class LoginController extends Controller
         }elseif(count(mahasiswa::where(['id'=>$id,'password'=>$pass])->get()) > 0 ){
             $request->session()->put('id_mahasiswa',$id);
             return  redirect('/sosmed');
+        }elseif(count(admin::where(['username'=>$id,'pass'=>$pass])->get()) > 0 ){
+            $request->session()->put('admin',$id);
+            return  redirect('/dosen');
         }else{
             dd('anda siapa login" sembarangan');
         }

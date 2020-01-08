@@ -76,3 +76,11 @@ route::post('/upload_tugas','tugascontroller@store');
 route::get('/jawab_tugas/{id}','tugascontroller@indexjawab');
 route::post('/jawab','tugascontroller@storejawaban');
 route::get('/data_tugas/{id}','tugascontroller@showdata');
+
+//admin 
+route::get('/admin','AdminController@index');
+
+
+//ukm
+route::get('/ukm','UKMController@index');
+route::get('/ukm','UKMController@index');
