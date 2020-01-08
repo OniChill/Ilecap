@@ -37,5 +37,9 @@ class kelas extends Model
     {
         return $this->hasMany('App\tugas_dosen','kelas_id','id');
     }
+    public function data_tugas_mahasiswa()
+    {
+        return $this->hasMany('App\data_tugas_mahasiswa','kelas_id','id');
+    }
 
 }

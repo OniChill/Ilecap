@@ -14,6 +14,8 @@
 @elseif($cek=="mahasiswa")
 <p>{{$nama_kelas->nama_kelas}} <a href="/materi/{{$nama_kelas->id}}">
 <button type="button" class="btn btn-outline-primary">Materi</button></a>
+<a href="/tugas/{{$nama_kelas->id}}">
+<button type="button" class="btn btn-outline-primary">Tugas </button></a>
 </p>
 
 
@@ -27,7 +29,7 @@
 					<p>{{$cm->chat}}</p>
 				</li>
         @endforeach
-        @foreach($chat_all as $ct)
+        @foreach($chat_kelas as $ct)
 				<li class="replies">
 					<h3>:{{$ct->nama}} </h3>
 					<p>{{$ct->chat}}</p>

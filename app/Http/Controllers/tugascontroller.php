@@ -81,7 +81,7 @@ public function showdata(Request $request,$id)
         $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
         $nama_kelas= kelas::find($id);
         $tugas=tugas_dosen::orderBy('created_at', 'desc')->where('dosen_id',$userId)->where('kelas_id',$id)->get();
-        $data = data_tugas_mahasiswa::find($id);
+        $data_tugas = data_tugas_mahasiswa::where('kelas_id',$id)->get();
       
         
     }elseif ($request->session()->get('id_mahasiswa')) {
@@ -92,9 +92,9 @@ public function showdata(Request $request,$id)
         $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
         $nama_kelas= kelas::find($id);
         $tugas=tugas_dosen::orderBy('created_at', 'desc')->where('kelas_id',$id)->get();
-        $data = data_tugas_mahasiswa::find($id);
+        $data_tugas = data_tugas_mahasiswa::where('kelas_id',$id)->get();
 }
-return view('tugas.data',compact('user','kls','cek','nama_kelas','kls_mhs','tugas','data'));
+return view('tugas.data',compact('user','kls','cek','nama_kelas','kls_mhs','tugas','data_tugas'));
 }
 
 
@@ -158,6 +158,7 @@ return view('tugas.jawab',compact('user','kls','cek','nama_kelas','kls_mhs','tug
             'berkas' => $request->file('jawab')->store('jawaban'),
          
         ]);
+       
         return redirect()->back();     
     }
     /**

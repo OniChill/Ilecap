@@ -77,6 +77,7 @@ route::get('/jawab_tugas/{id}','tugascontroller@indexjawab');
 route::post('/jawab','tugascontroller@storejawaban');
 route::get('/data_tugas/{id}','tugascontroller@showdata');
 
+
 //admin 
 route::get('/admin','AdminController@index');
 
@@ -84,3 +85,5 @@ route::get('/admin','AdminController@index');
 //ukm
 route::get('/ukm','UKMController@index');
 route::get('/ukm','UKMController@index');
+route::get('/ukm_chat/{ukm_id}/{id}','chat_ukmController@index');
+

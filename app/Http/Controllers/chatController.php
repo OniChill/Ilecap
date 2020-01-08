@@ -12,6 +12,7 @@ use App\komentar_mhs;
 use App\Post;
 use App\kelas;
 use App\detail_anggota_kelas;
+use App\data_angota_ukm;
 class chatController extends Controller
 {
     /**
@@ -34,9 +35,10 @@ class chatController extends Controller
             $cek = 'mahasiswa';
             $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
             $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+            $ukm_mhs = data_angota_ukm::orderBy('created_at', 'desc')->where('mahasiswa_id',$userId)->get();
         }
 
-    return view('Chat.chat_kelas',compact('user','kls','cek','kls_mhs'));
+    return view('Chat.chat_kelas',compact('user','kls','cek','kls_mhs','ukm_mhs'));
     }
 
     

@@ -17,4 +17,8 @@ class tugas_dosen extends Model
     {
         return $this->belongsTo('App\kelas','kelas_id');
     }
+    public function data_tugas_mahasiswa()
+    {
+        return $this->hasMany('App\data_tugas_mahasiswa','id_tugas','id');
+    }
 }
