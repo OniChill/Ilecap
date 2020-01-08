@@ -30,4 +30,14 @@ class mahasiswa extends Model
     {
         return $this->hasMany('App\like');
     }
+    
+    public function chat_kelas()
+    {
+        return $this->hasMany('App\chat_kelas','user_id','id');
+    }
+
+    public function detail_anggota_kelas()
+    {
+        return $this->hasMany('App\chat_kelas','user_id','id');
+    }
 }

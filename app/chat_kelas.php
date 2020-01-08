@@ -18,6 +18,11 @@ class chat_kelas extends Model
     {
         return $this->belongsTo('App\dosen');
     }
+    
+    public function kelas()
+    {
+        return $this->belongsTo('App\kelas');
+    }
 
     
 

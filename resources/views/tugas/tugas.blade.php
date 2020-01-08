@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>materi Kelas {{$nama_kelas->nama_kelas}}</title>
+    <title>Tugas Kelas {{$nama_kelas->nama_kelas}}</title>
       <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,13 +22,13 @@
 </head>
 <body>
 @if($cek=="dosen")
-<h3><b><center>Materi {{$nama_kelas->nama_kelas}} | Dosen {{$user->nama}}  </center></b></h3>
+<h3><b><center>Tugas {{$nama_kelas->nama_kelas}} | Dosen {{$user->nama}}  </center></b></h3>
 @else($cek=="mahasiswa")
-<h3><b><center>Materi{{$nama_kelas->nama_kelas}}</center></b></h3>
+<h3><b><center>Tugas {{$nama_kelas->nama_kelas}}</center></b></h3>
 @endif
 <a href="/chat"><button type="button" class="btn btn-dark">Back</button></a>
 @if($cek=="dosen")
-<a href="/add_materi/{{$nama_kelas->id}}"><button type="button" class="btn btn-primary">Tambah materi {{$nama_kelas->nama_kelas}}</button></a>
+<a href="/add_tugas/{{$nama_kelas->id}}"><button type="button" class="btn btn-primary">Tambah Tugas {{$nama_kelas->nama_kelas}}</button></a>
 @else($cek=="mahasiswa")
 
 @endif
@@ -38,14 +38,14 @@
                 <thead>
                 <tr>
                 @if($cek=="dosen")
-                  <th>Nama Materi</th>
-                  <th>jenis FIle</th>
+                  <th>Nama Tugas</th>
+                  <th>Deskripsi</th>
                   <th>DiUpload</th>
                   @else($cek=="mahasiswa")
                   <th>Nama Materi</th>
                   <th>jenis FIle</th>
                   <th>DiUpload</th>
-                  <th>Download</th>
+                  <th>Upload Jawaban</th>
                   @endif
                 
                 </tr>
@@ -53,19 +53,19 @@
                 <tbody>
                 
               
-                @foreach ($dosen_materi as $materi)
+                @foreach ($tugas as $tgs)
                 @if($cek=="dosen")
                   <tr>
-                  <td>{{$materi->judul_materi}}</td>
-                  <td>{{$materi->jenis_file}}</td>
-                  <td>{{$materi->created_at}}</td>
+                  <td>{{$tgs->nama_tugas}}</td>
+                  <td>{{$tgs->deskripsi}}</td>
+                  <td>{{$tgs->created_at}}</td>
                   </tr>
                   @else($cek=="mahasiswa")
                   <tr>
-                  <td>{{$materi->judul_materi}}</td>
-                  <td>{{$materi->jenis_file}}</td>
-                  <td>{{$materi->created_at}}</td>
-                  <td><button type="submit" class="btn btn-primary">Download File</button></td>
+                  <td>{{$tgs->nama_tugas}}</td>
+                  <td>{{$tgs->deskripsi}}</td>
+                  <td>{{$tgs->created_at}}</td>
+                  <td><a href="/jawab_tugas/{{$tgs->id}}"><button type="submit" class="btn btn-primary">Upload File</button></a></td>
                   </tr>
                   @endif
                 @endforeach

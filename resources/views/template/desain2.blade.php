@@ -749,53 +749,10 @@
 }
 
 </style></head><body>
-
-<div id="frame">
-	<div id="sidepanel">
-		<div id="profile">
-			<div class="wrap">
-      @yield('namauser')
-      
-            
-            
-        
-				
-				<div id="status-options">
-					<ul>
-						<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
-						<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
-						<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
-						<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
-					</ul>
-				</div>
-				
-			</div>
-		</div>
-       
-		<div id="contacts">
-    @yield ('menukelas') 
-    
-		</div>
-    
-
-    @yield('tambah_kelas')
+@yield ('a')
 
 
 
-
-	<div class="content">
-		<div class="contact-profile">
-		
-			@yield('namakelas')
-      
-			
-		</div>
-    
-		<div class="messages">
-			<ul>
-     @yield('chat')
-				
-			</ul>
-		</div>
- 
 </body></html>
+
+

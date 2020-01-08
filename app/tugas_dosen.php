@@ -12,4 +12,9 @@ class tugas_dosen extends Model
     {
         return $this->belongsTo('App\dosen','dosen_id');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\kelas','kelas_id');
+    }
 }

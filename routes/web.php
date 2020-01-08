@@ -52,6 +52,8 @@ route::get('/chat','chatController@index');
 route::get('/chat_kelas/{id}','chat_isicontroller@isi');
 route::get('/tambah_anggota/{id}','kls_anggotacontroller@indextambah');
 route::post('/add_toclass','kls_anggotacontroller@store');
+route::post('/send','chat_isicontroller@store');
+
 
 
 //controller tambahkelas
@@ -63,3 +65,9 @@ route::post('addkelas','kelascontroller@storekelas');
 route::get('/materi/{id}','matericontroller@index');
 route::get('/add_materi/{id}','matericontroller@indexadd');
 route::post('/upload_file','matericontroller@store');
+
+//TUGAS
+route::get('/tugas/{id}','tugascontroller@index');
+route::get('/add_tugas/{id}','tugascontroller@indexadd');
+route::post('/upload_tugas','tugascontroller@store');
+route::get('/jawab_tugas/{id}','tugascontroller@indexjawab');

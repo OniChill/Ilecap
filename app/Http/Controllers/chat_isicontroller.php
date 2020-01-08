@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\dosen_feed;
 use App\dosen;
 use App\mahasiswa;
-use App\mahasiswa_feed;
-use App\komentar_dosen;
-use App\komentar_mhs;
-use App\Post;
 use App\kelas;
 use App\detail_anggota_kelas;
+use App\chat_kelas;
 class chat_isicontroller extends Controller
 {
     /**
@@ -27,16 +23,23 @@ class chat_isicontroller extends Controller
             $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
             $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
             $nama_kelas= kelas::find($id);
+            $chat = chat_kelas::orderBy('created_at', 'asc')->where('user_id',$userId)->where('kelas_id',$id)->get();
+            $chat_all = chat_kelas::orderBy('created_at', 'asc')->where('kelas_id',$id)->where('user_id','!=',$userId)->get();
+            
         }elseif ($request->session()->get('id_mahasiswa')) {
             $userId = $request->session()->get('id_mahasiswa');
             $user = mahasiswa::find($userId);
             $cek = 'mahasiswa';
             $kls = kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
+
             $kls_mhs =detail_anggota_kelas::orderBy('created_at', 'desc')->where('user_id',$userId)->get();
-            $nama_kelas= detail_anggota_kelas::find($id);
+            $nama_kelas= kelas::find($id);
+            
+            $chat = chat_kelas::orderBy('created_at', 'asc')->where('user_id',$userId)->where('kelas_id',$id)->get();
+            $chat_all = chat_kelas::orderBy('created_at', 'asc')->where('kelas_id',$id)->where('user_id','!=',$userId)->get();
         }
 
-    return view('Chat.chat',compact('user','kls','cek','nama_kelas','kls_mhs'));
+    return view('Chat.chat',compact('user','kls','cek','nama_kelas','kls_mhs','chat','chat_all'));
     }
 
     /**
@@ -57,7 +60,14 @@ class chat_isicontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        chat_kelas::create([
+            'kelas_id'=> $request->klsid,
+          'user_id' => $request->id,
+            'chat' =>$request->pesan,
+            'nama' =>$request->nama,
+        ]);
+        
+    return Redirect()->back();
     }
 
     /**

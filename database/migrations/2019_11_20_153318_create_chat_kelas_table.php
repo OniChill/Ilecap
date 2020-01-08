@@ -14,7 +14,7 @@ class CreateChatKelasTable extends Migration
     public function up()
     {
         Schema::create('chat_kelas', function (Blueprint $table) {
-            $table->increments('id_chat');
+            $table->increments('id');
             $table->Integer('user_id')->length(10)->unsigned();
             $table->Integer('kelas_id')->length(10)->unsigned();
             $table->timestamps();
